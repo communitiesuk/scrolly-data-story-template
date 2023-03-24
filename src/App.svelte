@@ -1,6 +1,7 @@
 <script>
     import { setContext, onMount } from "svelte";
     import { themes } from "./config.js";
+    import { setColors } from "./utils.js";
 	import ONSHeader from "./layout/ONSHeader.svelte";
 	import ONSFooter from "./layout/ONSFooter.svelte";
 	import Header from "./layout/Header.svelte";
@@ -15,6 +16,7 @@
 
     let theme = "light";
 	setContext("theme", theme);
+	setColors(themes, theme);
 
 </script>
 
