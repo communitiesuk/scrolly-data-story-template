@@ -1,4 +1,20 @@
 <script>
+    import { setContext, onMount } from "svelte";
+    import { themes } from "./config.js";
+	import ONSHeader from "./layout/ONSHeader.svelte";
+	import ONSFooter from "./layout/ONSFooter.svelte";
+	import Header from "./layout/Header.svelte";
+	import Section from "./layout/Section.svelte";
+	import Media from "./layout/Media.svelte";
+	import Scroller from "./layout/Scroller.svelte";
+	import Filler from "./layout/Filler.svelte";
+	import Divider from "./layout/Divider.svelte";
+	import Toggle from "./ui/Toggle.svelte";
+	import Arrow from "./ui/Arrow.svelte";
+	import Em from "./ui/Em.svelte";
+
+    let theme = "light";
+	setContext("theme", theme);
 
 </script>
 
@@ -12,12 +28,6 @@
 	<p style="margin-top: 20px">
 		March 2023
 	</p>
-	<p>
-		<Toggle label="Animation {animation ? 'on' : 'off'}" mono={true} bind:checked={animation}/>
-	</p>
-	<div style="margin-top: 90px;">
-		<Arrow color="white" {animation}>Scroll to begin</Arrow>
-	</div>
 </Header>
 
 
