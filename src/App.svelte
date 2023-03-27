@@ -32,11 +32,30 @@
 	</p>
 </Header>
 
-
 <Section>
-	<h2>Section 1</h2>
+	<h2>National picture</h2>
 	<p class="mb">
 		Example text.
 	</p>
-	
+</Section>
+
+<Section>
+	<h2>Zoom into an Area</h2>
+	<p class="mb">
+		Example text.
+	</p>
+</Section>
+
+<Section>
+	<h2>Compare Metrics</h2>
+	<p class="mb">
+		Example text.
+	</p>
+</Section>
+
+<Section>
+	<h2>Highlight places of interest</h2>
+	<p class="mb">
+		Example text.
+	</p>
 </Section>
