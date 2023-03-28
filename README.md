@@ -1,6 +1,6 @@
 # Scrollytelling Data Story Template
 
-A component-based scrollytelling template made with Svelte. ([View demo](https://onsvisual.github.io/svelte-scrolly)).
+A component-based scrollytelling template made with Svelte.
 
 We have adapted code produced by the ONS for use in DLUHC.
 
