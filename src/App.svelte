@@ -59,3 +59,32 @@
 		Example text.
 	</p>
 </Section>
+
+
+
+
+<!---
+
+/* 
+Note this syntax is what I want to use for this, from svelte REPL testing.
+<script>
+	import Component2 from "./Component2.svelte";
+	import C3 from "./Component3.svelte";
+	let name = 'World'
+</script>
+
+<h1>Hello {name}!</h1>
+
+<h2>
+	This now does what I have in Component 2
+</h2>
+<Component2/>
+
+<h2>
+	This now does what I have in Component 3
+</h2>
+<C3/>
+*/
+
+
+-->

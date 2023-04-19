@@ -33,7 +33,15 @@ st_write(our_shapes, "tees_lsoas.geojson")
 
 workplace_reduced=workplace[,c(8,9,15)]
 lsoa_data = left_join(gva_tesside, workplace_reduced, by=c('LSOA code'='GEOGRAPHY_CODE'))
-write.csv(lsoa_data, "../data_lsoa.csv")
+
+#A few column renames.
+colnames(lsoa_data)[colnames(lsoa_data) == 'LSOA code'] <- 'code'
+colnames(lsoa_data)[colnames(lsoa_data) == 'LSOA name'] <- 'name'
+colnames(lsoa_data)[colnames(lsoa_data) == 'OBS_VALUE'] <- 'workplace_pop'
+
+lsoa_data$rank = rank(lsoa_data$`2020`)/ max(rank(lsoa_data$`2020`))
+
+write.csv(lsoa_data, "../data_lsoa.csv", row.names=F)
 
 #LAD data
 #For our app we want to look at different geographies, so get GVA at local authorites
@@ -64,11 +72,23 @@ la_data$lat3 = as.integer(lat_quintiles<= 3)
 la_data$lat4 = as.integer(lat_quintiles<= 4)
 la_data$lat5 = as.integer(lat_quintiles<= 5)
 
+#Also add in a column for the rank of GVA, scaled from 0 to 1 for LADs.
+la_data$rank = rank(la_data$GVA) / max(rank(la_data$GVA))
+
 write.csv(la_data, "../data_lad.csv", row.names=F)
 
 #I also want some points to plot on our maps.
 #Not meaningful, but I will use the centroid of the LAs in Teeside.
-
 teesside_la = la_shape[la_shape$LAD21NM %in% tees_valley_LAs,]
 points = st_centroid(teesside_la)
 st_write(points, "LA_centroid.geojson")
+
+#Also, let's use the rank data for both LSOAs and LADs together.
+
+lad_cut = la_data[,c('code', 'name', 'GVA', 'rank')]
+lsoa_cut = lsoa_data[,c('code', 'name', '2020', 'rank')]
+lsoa_cut$GVA = -50
+lad_cut$`2020` = -50
+rank_data = rbind(lad_cut, lsoa_cut)
+
+write.csv(rank_data, "../data_scatter.csv", row.names=F)
