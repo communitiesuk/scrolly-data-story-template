@@ -1,6 +1,7 @@
 import { csvParse, autoType } from 'd3-dsv';
 import { feature } from 'topojson-client';
 import { bbox, union } from '@turf/turf';
+import { map_variable_lookup } from './config';
 
 export function setColors(themes, theme) {
     for (let color in themes[theme]) {
