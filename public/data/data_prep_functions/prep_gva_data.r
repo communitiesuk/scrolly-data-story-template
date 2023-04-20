@@ -87,6 +87,11 @@ teesside_la = la_shape[la_shape$LAD21NM %in% tees_valley_LAs,]
 points = st_centroid(teesside_la)
 st_write(points, "LA_centroid.geojson")
 
+#Also want a CSV. No useful data here, but we can use the name as our data.
+points_data = st_drop_geometry(points[,c(2,3)])
+names(points_data) = c('code', 'name')
+write.csv(points_data, "../data_points.csv", row.names = F)
+
 #Also, let's use the rank data for both LSOAs and LADs together.
 
 lad_cut = la_data[,c('code', 'name', 'GVA', 'rank')]

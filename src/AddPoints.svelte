@@ -10,7 +10,7 @@
 	
     // DEMO-SPECIFIC IMPORTS
 	//import bbox from "@turf/bbox";
-	import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures} from "./utils.js";
+	import { getData, setColors, getTopo, getPoint, getColor, fitBounds, fitById, fitFeatures} from "./utils.js";
 	import { map_variable_lookup, colors, units, mapbounds } from "./config.js";
 	import { Map, MapSource, MapLayer, MapTooltip } from "@onsvisual/svelte-maps";
 	// CORE CONFIG (COLOUR THEMES)
@@ -32,12 +32,14 @@
 
     // Constants
 	const topojson = "./data/tees_lsoas.json";
+    const point_json = "./data/LA_centroid.json"
 	const mapstyle = "https://bothness.github.io/ons-basemaps/data/style-omt.json";
 
 // Data
-    let data = {lsoa: {}};
-	let metadata = {lsoa: {}};
+    let data = {lsoa: {}, point: {}};
+	let metadata = {lsoa: {}, point: {}};
 	let geojson;
+    let point_geo;
 	let LA_opac = 0.7;
 	// Element bindings
 	let map; // Bound to mapbox 'map' instance once initialised
@@ -50,6 +52,7 @@
     let hov = ''; 
     let hover_dict = {};
     let hovered_lsoa; // Hovered lsoa (chart or map)
+    let hovered_point;
 
     	// Functions for chart and map on:select and on:hover events
 	export function doSelect(e, map_id, geo) {
@@ -59,16 +62,20 @@
 	
 	export function doHover(e) {
 		hovered_lsoa = '';
+        hovered_point = '';
 		if (e.detail.id !== null){
 			let feature_id =  e.detail.id;
       if (e.detail.feature.source == 'lsoa'){
 				hovered_lsoa = feature_id; 
 			}
+            else if (e.detail.feature.source == 'point'){
+                hovered_point = feature_id
+            }
 			else{
 				hovered = feature_id;
 			}
 		}
-		hover_dict = {"lsoa": hovered_lsoa};	
+		hover_dict = {"lsoa": hovered_lsoa, "point": hovered_point};	
 	}
 
 export function doHover_chart(e) {
@@ -136,10 +143,27 @@ getData('./data/data_lsoa.csv')
 				data.lsoa.indicators = indicators;
 			});
 
+            getData(`./data/data_points.csv`)
+		.then(arr => {
+			let meta = arr.map(d => ({
+				code: d.code,
+				name: d.name,
+			}));
+			let lookup = {};
+			meta.forEach(d => {
+				lookup[d.code] = d;
+			});
+			metadata.point.array = meta;
+			metadata.point.lookup = lookup;
+		});
+
 //DATA inputs
-getTopo(topojson, 'data').then(geo => {
+    getTopo(topojson, 'data').then(geo => {
 		geojson = geo;
 	}); 
+    getPoint(point_json).then(geo => {
+		point_geo = geo;
+	});
 
 // FUNCTIONS (INCL. SCROLLER ACTIONS)
       
@@ -155,29 +179,10 @@ getTopo(topojson, 'data').then(geo => {
 			},
             map02: () => {
 				fitBounds(mapbounds.teesside, map);
-				mapKey = "GVA2015";
+				mapKey = "GVA2020";
 				mapHighlighted = [];
 				explore = false;
-			},
-            map03: () => {
-				fitBounds(mapbounds.teesside, map);
-				mapKey = "GVA2010";
-				mapHighlighted = [];
-				explore = false;
-			},
-            map04: () => {
-				fitBounds(mapbounds.teesside, map);
-				mapKey = "GVA2005";
-				mapHighlighted = [];
-				explore = false;
-			},
-            map05: () => {
-				fitBounds(mapbounds.teesside, map);
-				mapKey = "workplace_pop";
-				mapHighlighted = [];
-				explore = false;
-			}
-		}
+			}		}
 	};
 	// Code to run Scroller actions when new caption IDs come into view
 	function runActions(codes = []) {
@@ -202,6 +207,16 @@ getTopo(topojson, 'data').then(geo => {
 <Scroller {threshold} bind:index bind:offset bind:id={id['map']} splitscreen={true}>
 	<div slot="background">
 		<figure>
+            <div id="points-legend" class="legend" style="display: none; left: 60%, width: 35%; position: absolute">
+				<h4>Funds</h4>
+				<div><span style="background-color: #DF0667"></span>Middlesbrough</div>
+				<div><span style="background-color: #A8BD3A"></span>Darlington</div>
+				<div><span style="background-color: #FBC900"></span>Stockton-on-Tees</div>
+				<div><span style="background-color: #27A0CC"></span>Hartlepool</div>
+				<div><span style="background-color: #206095"></span>Redcar and Cleveland</div>
+				<div><span style="background-color: #0F8243"></span>County Durham</div>
+				
+			</div>
 			<div class="col-full height-full">
 			<Map style={mapstyle} bind:map interactive={false} location={{bounds: mapbounds.teesside}}>
 				<MapSource
@@ -250,7 +265,38 @@ getTopo(topojson, 'data').then(geo => {
 					/>
 				/>
 				</MapSource>
-	
+                <MapSource
+                id="point"
+                type="geojson"
+                data={point_geo}
+                promoteId="ID"
+                maxzoom={13}>
+                    {#if offset > 0.1 && index > 0} 
+                        {document.getElementById('points-legend').style = 'display: block; left: 60%, width: 35%; position: absolute'}
+                        <MapLayer
+                            id="point-circle"
+                            idKey="ID"
+                            type="circle"
+                            hover {hovered_point} on:hover={doHover}
+                            paint={{
+                                'circle-color': ['match', ['get', 'name'],        
+                                'Middlebrough', '#DF0667',                
+                                'Darlington', '#A8BD3A', 
+                                'Stockton-on-Tees', '#FBC900',
+                                'Hartlepool', '#27A0CC',
+                                'Redcar and Cleveland', '#206095',
+                                'County Durham', '#0F8243',   
+                                'red'], 
+                                'circle-radius':6
+                                }}
+                            >
+                        </MapLayer>
+                    {/if}
+                    {#if index==0}
+                    {document.getElementById('points-legend').style = 'display: none; left: 60%, width: 35%; position: absolute'}
+                    {map.removeLayer('point-circle')}
+                    {/if}					
+            </MapSource>
 			</Map>
 			</div>
             <ColourScaleLegend 
@@ -288,44 +334,31 @@ getTopo(topojson, 'data').then(geo => {
 				</p>
 			</div>
 		</section>
-		<section data-id="map03">
-			<div class="col-medium">
-				<a id="SubSect_prevdeath" style="color: black"><br><br></a>
-				<h2>High levels of preventable deaths </h2>
-				
-				<p>
-					The map shows MSOAs in Hull, shaded according to the average rate of preventable deaths in each area, compared to the average for England. 
-				</p>
-				<p>
-					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the highest (worst) levels of preventable deaths, <Em color={colors.seq_5[0]}>light yellow</Em> the lowest.  
-				</p>
-			</div>
-		</section>
-		<section data-id="map04">
-			<div class="col-medium">
-				<a id="SubSect_obesity" style="color: black"><br><br></a>
-				<h2>High levels of child obesity</h2>
-				<p>
-					The map shows MSOAs in Hull, shaded according to the average levels of child obesity in each area.  
-				</p>
-				<p>
-					Again, <Em color={colors.seq_5[4]}>dark blue</Em> areas have the highest (worst) levels of child obesity, <Em color={colors.seq_5[0]}>light yellow</Em> the lowest. 
-				</p>
-			</div>
-		</section>
-		<section data-id="map05">
-			<div class="col-medium">
-				<a id="SubSect_obesity" style="color: black"><br><br></a>
-				<h2>High levels of child obesity</h2>
-				<p>
-					The map shows MSOAs in Hull, shaded according to the average levels of child obesity in each area.  
-				</p>
-				<p>
-					Again, <Em color={colors.seq_5[4]}>dark blue</Em> areas have the highest (worst) levels of child obesity, <Em color={colors.seq_5[0]}>light yellow</Em> the lowest. 
-				</p>
-			</div>
-		</section>
 	</div>
 </Scroller>
 {/if}
 
+<style>
+.legend {
+	background-color: #fff;
+	border-radius: 3px;
+	top: 30px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	padding: 10px;
+	position: absolute;
+	right: 10px;
+	z-index: 1;	
+}	 
+	.legend h4 {
+	margin: 0 0 10px;
+	} 
+	.legend div span {
+	border-radius: 50%;
+	display: inline-block;
+	height: 10px;
+	margin-right: 5px;
+	width: 10px;
+	}
+
+</style>

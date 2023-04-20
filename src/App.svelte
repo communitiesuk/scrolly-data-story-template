@@ -22,6 +22,7 @@
 	import MapSpread from "./MapSpread.svelte";
 	import Chorpleths from "./Chorpleths.svelte";
     import ZoomMap from "./ZoomMap.svelte";
+	import AddPoints from "./AddPoints.svelte";
 
 </script>
 
@@ -45,7 +46,7 @@
 	
 </Section>
 
-<ZoomMap/>
+<AddPoints/>
 
 <Section>
 	<h2>Zoom into an Area</h2>
