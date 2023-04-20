@@ -1,3 +1,7 @@
+import { csvParse, autoType } from 'd3-dsv';
+import { feature } from 'topojson-client';
+import { bbox, union } from '@turf/turf';
+
 export function setColors(themes, theme) {
     for (let color in themes[theme]) {
       document.documentElement.style.setProperty('--' + color, themes[theme][color]);
@@ -9,6 +13,33 @@ export function setColors(themes, theme) {
       return !mediaQuery || mediaQuery.matches ? false : true; // return true for motion, false for no motion
   }
   
+  //Data collection functions.
+  export async function getData(url) {
+    let response = await fetch(url);
+    let string = await response.text();
+    let data = await csvParse(string, autoType);
+    return data;
+  }
+  
+  export async function getTopo(url, layer) {
+    let response = await fetch(url);
+    let json = await response.json();
+    let geojson = await feature(json, layer);
+    return geojson;
+  }
+  
+  export async function getPoint(url) {
+    let response = await fetch(url);
+    let json = await response.json();
+    return json;
+  }
+  
+  export function getPointTopo(url){
+    getPoint(url).then(geo => {
+      return geo;
+    });
+  }
+
 
   	// Functions for map component
 	export function fitBounds(bounds , map_id) {
@@ -35,3 +66,35 @@ export function setColors(themes, theme) {
 			fitBounds(bounds, map_id);
 		}
 	}
+
+	// Functions for chart and map on:select and on:hover events
+	export function doSelect(e, map_id, geo) {
+		selected = e.detail.id;
+		if (e.detail.feature) fitById(selected, map_id, geo); // Fit map if select event comes from map
+	}
+	
+	export function doHover(e) {
+		hovered_lad = '';
+		hovered_msoa = '';	
+		hovered_point = ''; 
+		if (e.detail.id !== null){
+			let feature_id =  e.detail.id;
+			if (e.detail.feature.source == 'lad'){
+				hovered_lad = feature_id; 
+			}
+			else if (e.detail.feature.source == 'msoa'){
+				hovered_msoa = feature_id; 
+			}
+			else if (e.detail.feature.source == 'point'){
+				hovered_point = feature_id;
+			}
+			else{
+				hovered = feature_id;
+			}
+		}
+		hover_dict = {"msoa": hovered_msoa, "lad": hovered_lad, "point": hovered_point};	
+	}
+
+export function doHover_chart(e) {
+  hovered = e.detail.id;
+}

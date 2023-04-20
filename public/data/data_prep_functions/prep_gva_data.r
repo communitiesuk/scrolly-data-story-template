@@ -3,6 +3,7 @@
 library(readxl)
 library(sf)
 library(nomisr)
+library(dplyr)
 
 
 #Read and convert data
@@ -39,6 +40,8 @@ colnames(lsoa_data)[colnames(lsoa_data) == 'LSOA code'] <- 'code'
 colnames(lsoa_data)[colnames(lsoa_data) == 'LSOA name'] <- 'name'
 colnames(lsoa_data)[colnames(lsoa_data) == 'OBS_VALUE'] <- 'workplace_pop'
 
+lsoa_data = lsoa_data %>% mutate(across(where(is.numeric), round, digits=2))
+
 lsoa_data$rank = rank(lsoa_data$`2020`)/ max(rank(lsoa_data$`2020`))
 
 write.csv(lsoa_data, "../data_lsoa.csv", row.names=F)
@@ -49,10 +52,6 @@ write.csv(lsoa_data, "../data_lsoa.csv", row.names=F)
 #https://www.ons.gov.uk/peoplepopulationandcommunity/wellbeing/datasets/subnationalindicatorsdataset
 gva_lad = read_excel("humanreadable.xlsx", sheet = "GVA per hour", skip=6)
 
-#For reference, let's check which LADs have the 5 lowest GVA.
-gva_lad[order(gva_lad$`Gross Value Added (GVA) per hour worked (£)`)[1:5],]
-#And the 5 highest
-gva_lad[order(gva_lad$`Gross Value Added (GVA) per hour worked (£)`, decreasing = T)[1:5],]
 
 #These use the 2021 LAD boundaries, which we have downloaded from the ONS geoportal
 #https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-december-2021-gb-buc-1/explore?location=55.218188%2C-3.265344%2C6.73
@@ -90,5 +89,23 @@ lsoa_cut = lsoa_data[,c('code', 'name', '2020', 'rank')]
 lsoa_cut$GVA = -50
 lad_cut$`2020` = -50
 rank_data = rbind(lad_cut, lsoa_cut)
-
 write.csv(rank_data, "../data_scatter.csv", row.names=F)
+
+
+###FIND VALUES FOR APP.
+#These don't go into the data prep
+#For reference, let's check which LADs have the 5 lowest GVA.
+#We will use the app to look at the lowest and highest areas.
+gva_lad[order(gva_lad$`Gross Value Added (GVA) per hour worked (£)`)[1:5],]
+#And the 5 highest
+gva_lad[order(gva_lad$`Gross Value Added (GVA) per hour worked (£)`, decreasing = T)[1:5],]
+
+
+#Also good to know what the quintiles for our data are.
+#If we wany maps with equal numbers in each colour, use these values.
+quantile(lsoa_data$workplace_pop, probs = seq(.0,1.0, by=.2), na.rm = T)
+quantile(lsoa_data$`2020`, probs = seq(.0,1.0, by=.2), na.rm = T)
+
+quantile(la_data$GVA, probs = seq(.0,1.0, by=.2), na.rm = T)
+
+

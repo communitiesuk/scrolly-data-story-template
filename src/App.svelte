@@ -18,6 +18,8 @@
 	setContext("theme", theme);
 	setColors(themes, theme);
 
+	import MoveMap from "./MoveMap.svelte";
+
 </script>
 
 <ONSHeader filled={true} center={false} />
@@ -37,6 +39,7 @@
 	<p class="mb">
 		Example text.
 	</p>
+	<MoveMap/>
 </Section>
 
 <Section>
