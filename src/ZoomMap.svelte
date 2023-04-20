@@ -130,11 +130,21 @@ getData('./data/data_lad.csv')
 			let indicators = arr.map((d, i) => ({
 				...meta[i],
 				GVA: d.GVA,
+                //These are dummy data so that when we zoom to LSOA, there is something in the GVA part.
+                GVA2020: d.GVA,
+                GVA2015: d.GVA,
+                GVA2010: d.GVA,
+                GVA2050: d.GVA,
+                workplace_pop: d.GVA,
 			}));
 
             ['GVA'].forEach(key => {
 					indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
 				});
+            ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop'].forEach(key => {
+                indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup['GVA'].scale, colors.seq_tr_20));
+				});
+
 			
 				data.lad.indicators = indicators;
 			});

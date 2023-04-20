@@ -23,6 +23,7 @@ export const themes = {
   export const colors = {
     seq_5: ['#ffffcc','#a1dab4','#41b6c4','#2c7fb8','#253494'],
     seq_tr_20: ['rgba(232, 237, 234, 0.3)', 'rgba(255,255,204,0.3)','rgba(161,218,180,0.3)','rgba(65,182,196,0.3)','rgba(44,127,184,0.3)','rgba(37,52,148,0.3)'],
+    seq_tr: ['rgba(0, 0, 0, 0)','rgba(0, 0, 0, 0)','rgba(0, 0, 0, 0)','rgba(0, 0, 0, 0)','rgba(0, 0, 0, 0)','rgba(0, 0, 0, 0)'],
     seq_5_r: ['#ffffcc','#a1dab4','#41b6c4','#2c7fb8','#253494'].reverse(),
     seq_tr_20_r: ['rgba(232, 237, 234, 0.3)', 'rgba(255,255,204,0.3)','rgba(161,218,180,0.3)','rgba(65,182,196,0.3)','rgba(44,127,184,0.3)','rgba(37,52,148,0.3)'].reverse(),
     seq_2: ['#ffffbf', '#d7191c'], //A binary colour map.
