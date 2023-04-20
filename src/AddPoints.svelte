@@ -209,7 +209,7 @@ getData('./data/data_lsoa.csv')
 	<div slot="background">
 		<figure>
             <div id="points-legend" class="legend" style="display: none; left: 60%, width: 35%; position: absolute">
-				<h4>Funds</h4>
+				<h4>Local Authorities</h4>
 				<div><span style="background-color: #DF0667"></span>Middlesbrough</div>
 				<div><span style="background-color: #A8BD3A"></span>Darlington</div>
 				<div><span style="background-color: #FBC900"></span>Stockton-on-Tees</div>
@@ -280,7 +280,7 @@ getData('./data/data_lsoa.csv')
                             type="circle"
                             hover {hovered_point} on:hover={doHover}
                             paint={{
-                                'circle-color': ['match', ['get', 'name'],        
+                                'circle-color': ['match', ['get', 'LAD21NM'],        
                                 'Middlebrough', '#DF0667',                
                                 'Darlington', '#A8BD3A', 
                                 'Stockton-on-Tees', '#FBC900',
@@ -292,12 +292,12 @@ getData('./data/data_lsoa.csv')
                                 }}
                             >
                             <MapTooltip content = {
-								hovered_point ? `${metadata.point.lookup[hovered_lsoa].name}` : ''
+								hovered_point ? `${metadata.point.lookup[hovered_point].name}` : ''
 							}
 					/>
                 </MapLayer>
                     {/if}
-                    {#if index==0 && map.getLayer('lsoa-fill')}
+                    {#if index==0 && map.getLayer('point-circle')}
                     {document.getElementById('points-legend').style = 'display: none; left: 60%, width: 35%; position: absolute'}
                     {map.removeLayer('point-circle')}
                     {/if}					
@@ -352,7 +352,7 @@ getData('./data/data_lsoa.csv')
 	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	padding: 10px;
 	position: absolute;
-	right: 10px;
+	left: 10px;
 	z-index: 1;	
 }	 
 	.legend h4 {
