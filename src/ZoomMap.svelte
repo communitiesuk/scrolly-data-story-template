@@ -32,7 +32,7 @@
 
     // Constants
 	const topojson = "./data/LAD.json";
-    const lsoajson = "./data/tees_lsoas.json"
+    const lsoa_topojson = "./data/tees_lsoas.json"
 	const mapstyle = "https://bothness.github.io/ons-basemaps/data/style-omt.json";
 
 // Data
@@ -171,8 +171,8 @@ getData('./data/data_lsoa.csv')
 getTopo(topojson, 'data').then(geo => {
 		geojson = geo;
 	}); 
-    getTopo(lsoajson, 'data').then(geo => {
-		geojson_lsoa = geo;
+    getTopo(lsoa_topojson, 'data').then(geo => {
+		lsoajson = geo;
 	}); 
 
 // FUNCTIONS (INCL. SCROLLER ACTIONS)
@@ -285,7 +285,7 @@ getTopo(topojson, 'data').then(geo => {
 									colorKey={mapKey + "_color"}
 									data={data.lsoa.indicators}
 									type="fill"
-									select {selected} on:select={(e) => doSelect(e, map, geojson)} clickIgnore={!explore}
+									select {selected} on:select={(e) => doSelect(e, map, lsoajson)} clickIgnore={!explore}
 									hover {hovered_lsoa} on:hover={doHover}
 									highlight highlighted={mapHighlighted}
 									paint={{
