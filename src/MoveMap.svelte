@@ -55,13 +55,13 @@
 	let map; // Bound to mapbox 'map' instance once initialised
 	// State
 	let hovered_lad; // Hovered lad (chart or map)
-	let hov = ''; 
-	let hover_dict = {};
 	let selected; // Selected area (chart or map)
 	let mapHighlighted = []; // Highlighted area (map only)
 	let mapKey = "GVA"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
+
+    import {hov, hover_dict} from "./utils.js"
     //Need these to be reactive.
     $: hover_name_finder(mapKey);
 	$: hover_data_finder(mapKey);
