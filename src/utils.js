@@ -5,7 +5,7 @@ import { map_variable_lookup } from './config';
 
 export let hov = ''; 
 export let hover_dict = {};
-export let hovered_lad; // Hovered lad (chart or map)
+export let hovered_lad = "E06000001"; // Hovered lad (chart or map)
 export let hovered_lsoa;
 export let hovered_msoa;
 export let hovered_point;
