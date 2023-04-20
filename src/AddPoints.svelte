@@ -300,7 +300,7 @@ getData('./data/data_lsoa.csv')
 					/>
                 </MapLayer>
                     {/if}
-                    {#if index==0}
+                    {#if index==0 && map.getLayer('lsoa-fill')}
                     {document.getElementById('points-legend').style = 'display: none; left: 60%, width: 35%; position: absolute'}
                     {map.removeLayer('point-circle')}
                     {/if}					
