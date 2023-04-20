@@ -65,7 +65,7 @@
         hovered_point = '';
 		if (e.detail.id !== null){
 			let feature_id =  e.detail.id;
-            console.log(feature_id)
+            console.log(e.detail)
       if (e.detail.feature.source == 'lsoa'){
 				hovered_lsoa = feature_id; 
 			}
