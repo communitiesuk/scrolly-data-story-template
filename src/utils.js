@@ -103,6 +103,7 @@ export function setColors(themes, theme) {
 		hovered_point = ''; 
 		if (e.detail.id !== null){
 			let feature_id =  e.detail.id;
+      console.log(e.detail.id)
 			if (e.detail.feature.source == 'lad'){
 				hovered_lad = feature_id; 
 			}
