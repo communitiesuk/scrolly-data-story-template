@@ -70,11 +70,10 @@
 				hovered_lsoa = feature_id; 
 			}
             else if (e.detail.feature.source == 'point'){
-                hovered_point = e.detail.properties.GeoCode;
+                hovered_point = e.detail.feature.properties.GeoCode;
             }
 			else{
 				hovered = feature_id;
-                hovered_point = feature_id;
 			}
 		}
 		hover_dict = {"lsoa": hovered_lsoa, "point": hovered_point};	
