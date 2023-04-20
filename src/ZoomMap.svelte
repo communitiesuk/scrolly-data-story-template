@@ -36,9 +36,10 @@
 	const mapstyle = "https://bothness.github.io/ons-basemaps/data/style-omt.json";
 
 // Data
-    let data = {lad: {}};
-	let metadata = {lad: {}};
+    let data = {lad: {}, lsoa: {}};
+	let metadata = {lad: {}, lsoa: {}};
 	let geojson;
+    let lsoajson;
 	let LA_opac = 0.7;
 	// Element bindings
 	let map; // Bound to mapbox 'map' instance once initialised
