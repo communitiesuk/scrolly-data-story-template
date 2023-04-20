@@ -20,6 +20,7 @@
 
 	import MoveMap from "./MoveMap.svelte";
 	import MapSpread from "./MapSpread.svelte";
+	import Chorpleths from "./Chorpleths.svelte";
 
 </script>
 
@@ -43,7 +44,7 @@
 	
 </Section>
 
-<MapSpread/>
+<Chorpleths/>
 
 <Section>
 	<h2>Zoom into an Area</h2>

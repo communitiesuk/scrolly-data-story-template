@@ -31,12 +31,12 @@
 	let index;
 
     // Constants
-	const topojson = "./data/LAD.json";
+	const topojson = "./data/tees_lsoas.json";
 	const mapstyle = "https://bothness.github.io/ons-basemaps/data/style-omt.json";
 
 // Data
-    let data = {lad: {}};
-	let metadata = {lad: {}};
+    let data = {lsoa: {}};
+	let metadata = {lsoa: {}};
 	let geojson;
 	let LA_opac = 0.7;
 	// Element bindings
@@ -49,7 +49,7 @@
 
     let hov = ''; 
     let hover_dict = {};
-    let hovered_lad; // Hovered lad (chart or map)
+    let hovered_lsoa; // Hovered lsoa (chart or map)
 
     	// Functions for chart and map on:select and on:hover events
 	export function doSelect(e, map_id, geo) {
@@ -58,17 +58,17 @@
 	}
 	
 	export function doHover(e) {
-		hovered_lad = '';
+		hovered_lsoa = '';
 		if (e.detail.id !== null){
 			let feature_id =  e.detail.id;
-      if (e.detail.feature.source == 'lad'){
-				hovered_lad = feature_id; 
+      if (e.detail.feature.source == 'lsoa'){
+				hovered_lsoa = feature_id; 
 			}
 			else{
 				hovered = feature_id;
 			}
 		}
-		hover_dict = {"lad": hovered_lad};	
+		hover_dict = {"lsoa": hovered_lsoa};	
 	}
 
 export function doHover_chart(e) {
@@ -76,7 +76,7 @@ export function doHover_chart(e) {
 }
 
 export let hover_data_finder = function(mapKey){
-  let geography_key = map_variable_lookup.lat.geography;
+  let geography_key = map_variable_lookup[mapKey].geography;
   hov = hover_dict[geography_key]
   if (hov){
     let hover_data = data[geography_key].indicators?.find(d => d.code == hov)[mapKey]
@@ -90,7 +90,7 @@ export let hover_data_finder = function(mapKey){
   return "";
 }
 export let hover_name_finder = function(mapKey){
-  let geography_key = map_variable_lookup.lat.geography;
+  let geography_key = map_variable_lookup[mapKey].geography;
   hov = hover_dict[geography_key]
   if (hov) {
     return metadata[geography_key].lookup[hov].name
@@ -103,11 +103,11 @@ export let hover_name_finder = function(mapKey){
     $: hover_name_finder(mapKey);
 	$: hover_data_finder(mapKey);
     $: map_variable_lookup;
-    $: hovered_lad;
+    $: hovered_lsoa;
     $: hover_dict;
 
-//For the scatter/jitter plots, let's attempt to do LAD and MSOA in the same frame.
-getData('./data/data_lad.csv')
+//For the scatter/jitter plots, let's attempt to do lsoa and MSOA in the same frame.
+getData('./data/data_lsoa.csv')
 	.then(arr => {
 		let meta = arr.map(d => ({
 				code: d.code,
@@ -118,22 +118,22 @@ getData('./data/data_lad.csv')
 			meta.forEach(d => {
 				lookup[d.code] = d;
 			});
-			metadata.lad.array = meta;
-			metadata.lad.lookup = lookup;
+			metadata.lsoa.array = meta;
+			metadata.lsoa.lookup = lookup;
 			let indicators = arr.map((d, i) => ({
 				...meta[i],
-                lat1: d.lat1,
-                lat2: d.lat2,
-                lat3: d.lat3,
-                lat4: d.lat4,
-                lat5: d.lat5,
+                2020: d.GVA2020,
+                2015: d.GVA2015,
+                2010: d.GVA2010,
+                2005: d.GVA2005,
+                workplace_pop: d.workplace_pop,
 			}));
 
-            ['lat1', 'lat2', 'lat3', 'lat4', 'lat5'].forEach(key => {
-					indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup.lat.scale, map_variable_lookup.lat.scale_colours));
+            ['2020', '2015', '2010', '2005', 'workplace_pop'].forEach(key => {
+					indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[mapKey].scale, map_variable_lookup[mapKey].scale_colours));
 				});
 			
-				data.lad.indicators = indicators;
+				data.lsoa.indicators = indicators;
 			});
 
 //DATA inputs
@@ -148,32 +148,32 @@ getTopo(topojson, 'data').then(geo => {
 	const actions = {
 		map: { // Actions for <Scroller/> with id="map"
 		map01: () => {
-				fitBounds(mapbounds.uk, map);
-				mapKey = "lat1";
+				fitBounds(mapbounds.teesside, map);
+				mapKey = "GVA2020";
 				mapHighlighted = [];
 				explore = false;
 			},
             map02: () => {
-				fitBounds(mapbounds.uk, map);
-				mapKey = "lat2";
+				fitBounds(mapbounds.teesside, map);
+				mapKey = "GVA2015";
 				mapHighlighted = [];
 				explore = false;
 			},
             map03: () => {
-				fitBounds(mapbounds.uk, map);
-				mapKey = "lat3";
+				fitBounds(mapbounds.teesside, map);
+				mapKey = "GVA2010";
 				mapHighlighted = [];
 				explore = false;
 			},
             map04: () => {
-				fitBounds(mapbounds.uk, map);
-				mapKey = "lat4";
+				fitBounds(mapbounds.teesside, map);
+				mapKey = "GVA2005";
 				mapHighlighted = [];
 				explore = false;
 			},
             map05: () => {
-				fitBounds(mapbounds.uk, map);
-				mapKey = "lat5";
+				fitBounds(mapbounds.teesside, map);
+				mapKey = "workplace_pop";
 				mapHighlighted = [];
 				explore = false;
 			}
@@ -198,26 +198,26 @@ getTopo(topojson, 'data').then(geo => {
 <!-- HTML part -->
 
 
-{#if geojson && data.lad.indicators}
+{#if geojson && data.lsoa.indicators}
 <Scroller {threshold} bind:index bind:offset bind:id={id['map']} splitscreen={true}>
 	<div slot="background">
 		<figure>
 			<div class="col-full height-full">
-			<Map style={mapstyle} bind:map interactive={false} location={{bounds: mapbounds.uk}}>
+			<Map style={mapstyle} bind:map interactive={false} location={{bounds: mapbounds.teesside}}>
 				<MapSource
-					id="lad"
+					id="lsoa"
 					type="geojson"
 					data={geojson}
 					promoteId="GeoCode"
 					maxzoom={13}>
 					<MapLayer
-						id="lad-fill"
+						id="lsoa-fill"
 						idKey="code"
 						colorKey={mapKey + "_color"}
-						data={data.lad.indicators}
+						data={data.lsoa.indicators}
 						type="fill"
 						select {selected} on:select={(e) => doSelect(e, map, geojson)} clickIgnore={!explore}
-						hover {hovered_lad} on:hover={doHover}
+						hover {hovered_lsoa} on:hover={doHover}
 						highlight highlighted={mapHighlighted}
 						paint={{
 						'fill-color': ['case',
@@ -228,12 +228,12 @@ getTopo(topojson, 'data').then(geo => {
 						}}
 					>
 					<MapTooltip content = {
-								hovered_lad ? `${metadata.lad.lookup[hovered_lad].name}<br/><strong>${data.lad.indicators.find(d => d.code == hovered_lad)[mapKey].toLocaleString()} ${units.lat}</strong>` : ''
+								hovered_lsoa ? `${metadata.lsoa.lookup[hovered_lsoa].name}<br/><strong>${data.lsoa.indicators.find(d => d.code == hovered_lsoa)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
 							}
 					/>
 					</MapLayer>
 					<MapLayer
-						id="lad-line"
+						id="lsoa-line"
 						type="line"
 						paint={{
 							'line-color': ['case',
