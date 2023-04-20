@@ -15,12 +15,12 @@
 	import Toggle from "./ui/Toggle.svelte";
 	import Arrow from "./ui/Arrow.svelte";
 	import Em from "./ui/Em.svelte";
-	import ColourScaleLegend from "./maps/ColourScaleLegend.svelte";
+	import ColourScaleLegend from "./map_components/ColourScaleLegend.svelte";
 	
     // DEMO-SPECIFIC IMPORTS
 	//import bbox from "@turf/bbox";
 	import { bbox, union } from '@turf/turf';
-	import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures, doHover, doSelect} from "./utils.js";
+	import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures, doHover, doSelect, hover_data_finder, hover_name_finder} from "./utils.js";
 	import { map_variable_lookup, colors, units, mapbounds } from "./config.js";
 	import { ScatterChart, LineChart, BarChart } from "@onsvisual/svelte-charts";
 	import { Map, MapSource, MapLayer, MapTooltip } from "@onsvisual/svelte-maps";
