@@ -277,7 +277,7 @@ getTopo(topojson, 'data').then(geo => {
 					id="lsoa"
 					type="geojson"
 					data={lsoajson}
-					promoteId="LSOA11CD"
+					promoteId="GeoCode"
 					maxzoom={13}>
 						{#if offset > 0.1 && index > 0 && map.getLayer('lad-fill')} 
 							<MapLayer
