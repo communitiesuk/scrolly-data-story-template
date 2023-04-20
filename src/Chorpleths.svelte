@@ -122,10 +122,10 @@ getData('./data/data_lsoa.csv')
 			metadata.lsoa.lookup = lookup;
 			let indicators = arr.map((d, i) => ({
 				...meta[i],
-                2020: d.GVA2020,
-                2015: d.GVA2015,
-                2010: d.GVA2010,
-                2005: d.GVA2005,
+                GVA2020: d.GVA2020,
+                GVA2015: d.GVA2015,
+                GVA2010: d.GVA2010,
+                GVA2005: d.GVA2005,
                 workplace_pop: d.workplace_pop,
 			}));
 

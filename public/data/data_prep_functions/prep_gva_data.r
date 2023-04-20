@@ -44,6 +44,11 @@ lsoa_data = lsoa_data %>% mutate(across(where(is.numeric), round, digits=2))
 
 lsoa_data$rank = rank(lsoa_data$`2020`)/ max(rank(lsoa_data$`2020`))
 
+#Adjust colnames to make sure they're all strings.
+library(stringr)
+names(lsoa_data)  = str_replace(names(lsoa_data), "20", "GVA20")
+names(lsoa_data)  = str_replace(names(lsoa_data), "19", "GVA19")
+
 write.csv(lsoa_data, "../data_lsoa.csv", row.names=F)
 
 #LAD data
