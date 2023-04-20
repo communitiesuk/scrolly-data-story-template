@@ -178,7 +178,7 @@ getTopo(topojson, 'data').then(geo => {
 						}}
 					>
 					<MapTooltip content = {
-								`${hovered_lad}` 
+								"This should be constat, but show" 
 							}
 					/>
 					</MapLayer>
