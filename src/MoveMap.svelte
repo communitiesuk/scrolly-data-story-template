@@ -20,7 +20,7 @@
     // DEMO-SPECIFIC IMPORTS
 	//import bbox from "@turf/bbox";
 	import { bbox, union } from '@turf/turf';
-	import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures, doHover, doSelect, hover_data_finder, hover_name_finder} from "./utils.js";
+	import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures} from "./utils.js";
 	import { map_variable_lookup, colors, units, mapbounds } from "./config.js";
 	import { ScatterChart, LineChart, BarChart } from "@onsvisual/svelte-charts";
 	import { Map, MapSource, MapLayer, MapTooltip } from "@onsvisual/svelte-maps";
@@ -59,8 +59,70 @@
 	let mapKey = "GVA"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
+    let hov = ''; 
+    let hover_dict = {};
+    let hovered_lad; // Hovered lad (chart or map)
 
-    import {hov, hover_dict, hovered_lad} from "./utils.js"
+    	// Functions for chart and map on:select and on:hover events
+	export function doSelect(e, map_id, geo) {
+		selected = e.detail.id;
+		if (e.detail.feature) fitById(selected, map_id, geo); // Fit map if select event comes from map
+	}
+	
+	export function doHover(e) {
+		hovered_lad = '';
+		hovered_lsoa = '';	
+		hovered_msoa = '';	
+		hovered_point = ''; 
+		if (e.detail.id !== null){
+			let feature_id =  e.detail.id;
+      if (e.detail.feature.source == 'lad'){
+				hovered_lad = feature_id; 
+			}
+			else if (e.detail.feature.source == 'msoa'){
+				hovered_msoa = feature_id; 
+			}
+			else if (e.detail.feature.source == 'lsoa'){
+				hovered_lsoa = feature_id; 
+			}
+			else if (e.detail.feature.source == 'point'){
+				hovered_point = feature_id;
+			}
+			else{
+				hovered = feature_id;
+			}
+		}
+		hover_dict = {"lsoa": hovered_lsoa, "msoa": hovered_msoa, "lad": hovered_lad, "point": hovered_point};	
+	}
+
+export function doHover_chart(e) {
+  hovered = e.detail.id;
+}
+
+export let hover_data_finder = function(mapKey){
+  let geography_key = map_variable_lookup[mapKey].geography;
+  hov = hover_dict[geography_key]
+  if (hov){
+    let hover_data = data[geography_key].indicators?.find(d => d.code == hov)[mapKey]
+    if (hover_data == '0'){
+      return "Data unavailable";
+    }
+    else{
+      return Number(hover_data);
+    }
+  }
+  return "";
+}
+export let hover_name_finder = function(mapKey){
+  let geography_key = map_variable_lookup[mapKey].geography;
+  hov = hover_dict[geography_key]
+  if (hov) {
+    return metadata[geography_key].lookup[hov].name
+  } else {
+    return "";
+  }
+}
+
     //Need these to be reactive.
     $: hover_name_finder(mapKey);
 	$: hover_data_finder(mapKey);

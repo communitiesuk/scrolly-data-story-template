@@ -3,12 +3,6 @@ import { feature } from 'topojson-client';
 import { bbox, union } from '@turf/turf';
 import { map_variable_lookup } from './config';
 
-export let hov = ''; 
-export let hover_dict = {};
-export let hovered_lad = "E06000001"; // Hovered lad (chart or map)
-export let hovered_lsoa;
-export let hovered_msoa;
-export let hovered_point;
 
 export function setColors(themes, theme) {
     for (let color in themes[theme]) {
@@ -90,62 +84,3 @@ export function setColors(themes, theme) {
 		}
 	}
 
-	// Functions for chart and map on:select and on:hover events
-	export function doSelect(e, map_id, geo) {
-		selected = e.detail.id;
-		if (e.detail.feature) fitById(selected, map_id, geo); // Fit map if select event comes from map
-	}
-	
-	export function doHover(e) {
-		hovered_lad = '';
-		hovered_lsoa = '';	
-		hovered_msoa = '';	
-		hovered_point = ''; 
-		if (e.detail.id !== null){
-			let feature_id =  e.detail.id;
-      if (e.detail.feature.source == 'lad'){
-				hovered_lad = feature_id; 
-			}
-			else if (e.detail.feature.source == 'msoa'){
-				hovered_msoa = feature_id; 
-			}
-			else if (e.detail.feature.source == 'lsoa'){
-				hovered_lsoa = feature_id; 
-			}
-			else if (e.detail.feature.source == 'point'){
-				hovered_point = feature_id;
-			}
-			else{
-				hovered = feature_id;
-			}
-		}
-		hover_dict = {"lsoa": hovered_lsoa, "msoa": hovered_msoa, "lad": hovered_lad, "point": hovered_point};	
-	}
-
-export function doHover_chart(e) {
-  hovered = e.detail.id;
-}
-
-export let hover_data_finder = function(mapKey){
-  let geography_key = map_variable_lookup[mapKey].geography;
-  hov = hover_dict[geography_key]
-  if (hov){
-    let hover_data = data[geography_key].indicators?.find(d => d.code == hov)[mapKey]
-    if (hover_data == '0'){
-      return "Data unavailable";
-    }
-    else{
-      return Number(hover_data);
-    }
-  }
-  return "";
-}
-export let hover_name_finder = function(mapKey){
-  let geography_key = map_variable_lookup[mapKey].geography;
-  hov = hover_dict[geography_key]
-  if (hov) {
-    return metadata[geography_key].lookup[hov].name
-  } else {
-    return "";
-  }
-}
