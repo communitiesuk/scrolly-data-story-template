@@ -44,7 +44,7 @@
 	// State
 	let selected; // Selected area (chart or map)
 	let mapHighlighted = []; // Highlighted area (map only)
-	let mapKey = "lat1"; // Key for data to be displayed on map
+	let mapKey = "GVA2020"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
     let hov = ''; 
@@ -129,8 +129,8 @@ getData('./data/data_lsoa.csv')
                 workplace_pop: d.workplace_pop,
 			}));
 
-            ['2020', '2015', '2010', '2005', 'workplace_pop'].forEach(key => {
-					indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[mapKey].scale, map_variable_lookup[mapKey].scale_colours));
+            ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop'].forEach(key => {
+                indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
 				});
 			
 				data.lsoa.indicators = indicators;
@@ -253,6 +253,12 @@ getTopo(topojson, 'data').then(geo => {
 	
 			</Map>
 			</div>
+            <ColourScaleLegend 
+            map_key = {mapKey}
+            hov = {hover_dict[map_variable_lookup[mapKey].geography]}
+            highlighted_val = {(hover_dict[map_variable_lookup[mapKey].geography])? ((hover_data_finder(mapKey) == 'Data unavailable')? '-' : hover_data_finder(mapKey)): ''}
+            scale_text =  {(hover_dict[map_variable_lookup[mapKey].geography])? map_variable_lookup[mapKey]['full_name'] + ' for ' + hover_name_finder(mapKey) + ': ': '\n'}  
+        />
 		</figure>
 	</div>
 	<div slot="foreground">
