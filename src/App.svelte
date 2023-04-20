@@ -66,7 +66,149 @@
 </Section>
 
 
-
+<style>
+	:global(svelte-scroller-foreground) {
+		pointer-events: none !important;
+		max-width: 100% !important;
+    	overflow-x: hidden !important;
+	}
+	:global(svelte-scroller-foreground section div) {
+		pointer-events: all !important;
+	}
+	:global(svelte-scroller-background) {
+		overflow-x: hidden !important;
+	}
+	button {
+		cursor: pointer;
+		font-size: 14px;
+		font-weight: bold;
+		margin-top: 5px;
+	}
+	select {
+		max-width: 350px;
+	}
+	.chart {
+		margin-top: 45px;
+		width: calc(100% - 5px);
+	}
+	.chart-full {
+		margin: 0 20px;
+	}
+	.chart-sml {
+		font-size: 0.85em;
+	}
+	.media {
+		background-color: #f0f0f0;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-flow: column;
+		flex-flow: column;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		text-align: center;
+		color: #aaa;
+	}
+	.img {
+		float:right;
+		height:auto;
+	} 
+	.legend {
+	background-color: #fff;
+	border-radius: 3px;
+	top: 30px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	padding: 10px;
+	position: absolute;
+	right: 10px;
+	z-index: 1;	
+}	 
+	.legend h4 {
+	margin: 0 0 10px;
+	} 
+	.legend div span {
+	border-radius: 50%;
+	display: inline-block;
+	height: 10px;
+	margin-right: 5px;
+	width: 10px;
+	}
+	.label {
+		position: absolute;
+		font-size: 14px;
+		color: #666;
+	}
+	.label-title {
+		color: #333;
+		font-weight: bold;
+	}
+	.label-y {
+		top: 0px;
+		text-align: right;
+		-webkit-writing-mode: vertical-rl;
+		-ms-writing-mode: tb-rl;
+		writing-mode: vertical-rl;
+		-webkit-transform: rotate(-180deg);
+		-ms-transform: rotate(-180deg);
+		transform: rotate(-180deg);
+	}
+	.floater{
+  position:fixed;
+  top: 3px;
+  left: 3px;
+  z-index: 100;
+  background-color: #fff;
+  border: 2px solid #253494;
+  font-size: 12px;
+  padding: 5px;
+-webkit-transition: all 0.3s ease-out;
+-moz-transition: all 0.3s ease-out;
+-ms-transition: all 0.3s ease-out;
+-o-transition: all 0.3s ease-out;
+transition: all 0.3s ease-out;
+}
+.floater .hovered { display:none }
+.floater:hover .hovered { display: block; }
+.floater p { display: inline }
+.floater:hover p { display: inline }
+.floater:hover {
+  position:fixed;
+  top: 3px;
+  left: 3px;
+  z-index: 100;
+  background-color: #fff;
+  border: 2px solid #253494;
+  font-size: 16px;
+  padding: 5px;
+}
+.floater:active p { display: inline }
+.floater:active{
+		
+		position:fixed;
+		top: 3px;
+		left: 3px;
+		z-index: 100;
+		background-color: #fff;
+		border: 2px solid #253494;
+		font-size: 16px;
+		padding: 5px;
+	  }
+	  
+body {
+    overflow-x: hidden !important;
+}
+.container {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+:global() {
+    scroll-behavior: smooth;
+}
+</style>
 
 <!---
 
