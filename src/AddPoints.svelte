@@ -69,7 +69,7 @@
 				hovered_lsoa = feature_id; 
 			}
             else if (e.detail.feature.source == 'point'){
-                hovered_point = feature_id
+                hovered_point = feature_id;
             }
 			else{
 				hovered = feature_id;
@@ -288,7 +288,7 @@ getData('./data/data_lsoa.csv')
                                 'Redcar and Cleveland', '#206095',
                                 'County Durham', '#0F8243',   
                                 'red'], 
-                                'circle-radius':6
+                                'circle-radius':20
                                 }}
                             >
                             <MapTooltip content = {

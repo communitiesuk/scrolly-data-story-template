@@ -50,6 +50,7 @@ export const themes = {
       'GVA2015': 'million',
       'GVA2010': 'million',
       'GVA2005': 'million',
+      'GVA2020_faint': 'million',
       'workplace_pop': 'people',
       'latitude': ''
     };
