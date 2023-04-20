@@ -39,8 +39,10 @@
 	<p class="mb">
 		Example text.
 	</p>
-	<MoveMap/>
+	
 </Section>
+
+<MoveMap/>
 
 <Section>
 	<h2>Zoom into an Area</h2>
