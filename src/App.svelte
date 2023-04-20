@@ -19,6 +19,7 @@
 	setColors(themes, theme);
 
 	import MoveMap from "./MoveMap.svelte";
+	import MapSpread from "./MapSpread.svelte";
 
 </script>
 
@@ -42,7 +43,7 @@
 	
 </Section>
 
-<MoveMap/>
+<MapSpread/>
 
 <Section>
 	<h2>Zoom into an Area</h2>

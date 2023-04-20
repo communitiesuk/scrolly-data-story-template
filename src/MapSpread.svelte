@@ -44,7 +44,7 @@
 	// State
 	let selected; // Selected area (chart or map)
 	let mapHighlighted = []; // Highlighted area (map only)
-	let mapKey = "GVA"; // Key for data to be displayed on map
+	let mapKey = "lat1"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
     let hov = ''; 
@@ -122,11 +122,15 @@ getData('./data/data_lad.csv')
 			metadata.lad.lookup = lookup;
 			let indicators = arr.map((d, i) => ({
 				...meta[i],
-				GVA: d.GVA,
+                lat1: d.lat1,
+                lat2: d.lat2,
+                lat3: d.lat3,
+                lat4: d.lat4,
+                lat5: d.lat5,
 			}));
 
-            ['GVA'].forEach(key => {
-					indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
+            ['lat1', 'lat2', 'lat3', 'lat4', 'lat4'].forEach(key => {
+					indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup.lat.scale, map_variable_lookup.lat.scale_colours));
 				});
 			
 				data.lad.indicators = indicators;
@@ -145,25 +149,31 @@ getTopo(topojson, 'data').then(geo => {
 		map: { // Actions for <Scroller/> with id="map"
 		map01: () => {
 				fitBounds(mapbounds.uk, map);
-				mapKey = "GVA";
+				mapKey = "lat1";
 				mapHighlighted = [];
 				explore = false;
 			},
-			map02: () => {
-				fitById("E06000010", map, geojson);
-				mapKey = "GVA";
+            map02: () => {
+				fitBounds(mapbounds.uk, map);
+				mapKey = "lat2";
 				mapHighlighted = [];
 				explore = false;
 			},
-			map03: () => {
-				fitById("E06000030", map, geojson);
-				mapKey = "GVA";
+            map03: () => {
+				fitBounds(mapbounds.uk, map);
+				mapKey = "lat3";
 				mapHighlighted = [];
 				explore = false;
 			},
-			map04: () => {
-				fitById("E06000004", map, geojson);
-				mapKey = "GVA";
+            map04: () => {
+				fitBounds(mapbounds.uk, map);
+				mapKey = "lat4";
+				mapHighlighted = [];
+				explore = false;
+			},
+            map05: () => {
+				fitBounds(mapbounds.uk, map);
+				mapKey = "lat5";
 				mapHighlighted = [];
 				explore = false;
 			}
@@ -263,11 +273,6 @@ getTopo(topojson, 'data').then(geo => {
 				<p>
 					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the lowest (worst) levels of HLE, <Em color={colors.seq_5[0]}>light yellow</Em> the highest. Areas such as Rutland have 19 more years of healthy life expectancy than areas such as Hull.
 				</p>
-<!-- Remove the zoom reset button
-					<button class="text-small" on:click={() => fitBounds(mapbounds.england, map)}>
-					<img src="./data/icon-reset.svg" class="svg-icon" alt="" aria-hidden="true"/>Reset zoom
-				</button>
-				-->
 			</div>
 		</section>
 		<section data-id="map02">
@@ -298,6 +303,18 @@ getTopo(topojson, 'data').then(geo => {
 			</div>
 		</section>
 		<section data-id="map04">
+			<div class="col-medium">
+				<a id="SubSect_obesity" style="color: black"><br><br></a>
+				<h2>High levels of child obesity</h2>
+				<p>
+					The map shows MSOAs in Hull, shaded according to the average levels of child obesity in each area.  
+				</p>
+				<p>
+					Again, <Em color={colors.seq_5[4]}>dark blue</Em> areas have the highest (worst) levels of child obesity, <Em color={colors.seq_5[0]}>light yellow</Em> the lowest. 
+				</p>
+			</div>
+		</section>
+		<section data-id="map05">
 			<div class="col-medium">
 				<a id="SubSect_obesity" style="color: black"><br><br></a>
 				<h2>High levels of child obesity</h2>
