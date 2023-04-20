@@ -71,28 +71,16 @@
 	
 	export function doHover(e) {
 		hovered_lad = '';
-		hovered_lsoa = '';	
-		hovered_msoa = '';	
-		hovered_point = ''; 
 		if (e.detail.id !== null){
 			let feature_id =  e.detail.id;
       if (e.detail.feature.source == 'lad'){
 				hovered_lad = feature_id; 
 			}
-			else if (e.detail.feature.source == 'msoa'){
-				hovered_msoa = feature_id; 
-			}
-			else if (e.detail.feature.source == 'lsoa'){
-				hovered_lsoa = feature_id; 
-			}
-			else if (e.detail.feature.source == 'point'){
-				hovered_point = feature_id;
-			}
 			else{
 				hovered = feature_id;
 			}
 		}
-		hover_dict = {"lsoa": hovered_lsoa, "msoa": hovered_msoa, "lad": hovered_lad, "point": hovered_point};	
+		hover_dict = {"lad": hovered_lad};	
 	}
 
 export function doHover_chart(e) {
