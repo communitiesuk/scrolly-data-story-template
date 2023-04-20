@@ -70,7 +70,7 @@
 				hovered_lsoa = feature_id; 
 			}
             else if (e.detail.feature.source == 'point'){
-                hovered_point = feature_id;
+                hovered_point = e.detail.properties.GeoCode;
             }
 			else{
 				hovered = feature_id;
