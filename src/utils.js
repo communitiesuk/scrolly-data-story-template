@@ -5,6 +5,10 @@ import { map_variable_lookup } from './config';
 
 export let hov = ''; 
 export let hover_dict = {};
+export let hovered_lad; // Hovered lad (chart or map)
+export let hovered_lsoa;
+export let hovered_msoa;
+export let hovered_point;
 
 export function setColors(themes, theme) {
     for (let color in themes[theme]) {
@@ -94,6 +98,7 @@ export function setColors(themes, theme) {
 	
 	export function doHover(e) {
 		hovered_lad = '';
+		hovered_lsoa = '';	
 		hovered_msoa = '';	
 		hovered_point = ''; 
 		if (e.detail.id !== null){
@@ -104,6 +109,9 @@ export function setColors(themes, theme) {
 			else if (e.detail.feature.source == 'msoa'){
 				hovered_msoa = feature_id; 
 			}
+			else if (e.detail.feature.source == 'lsoa'){
+				hovered_lsoa = feature_id; 
+			}
 			else if (e.detail.feature.source == 'point'){
 				hovered_point = feature_id;
 			}
@@ -111,7 +119,7 @@ export function setColors(themes, theme) {
 				hovered = feature_id;
 			}
 		}
-		hover_dict = {"msoa": hovered_msoa, "lad": hovered_lad, "point": hovered_point};	
+		hover_dict = {"lsoa": hovered_lsoa, "msoa": hovered_msoa, "lad": hovered_lad, "point": hovered_point};	
 	}
 
 export function doHover_chart(e) {
