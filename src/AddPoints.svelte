@@ -65,12 +65,11 @@
         hovered_point = '';
 		if (e.detail.id !== null){
 			let feature_id =  e.detail.id;
-            console.log(e.detail)
       if (e.detail.feature.source == 'lsoa'){
 				hovered_lsoa = feature_id; 
 			}
             else if (e.detail.feature.source == 'point'){
-                hovered_point = e.detail.feature.properties.GeoCode;
+                hovered_point = feature_id;
             }
 			else{
 				hovered = feature_id;
