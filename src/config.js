@@ -45,7 +45,10 @@ export const themes = {
 
     export const units = {
       'GVA': '£/job filled',
-      'GVA_LSOA': 'million',
+      'GVA2020': 'million',
+      'GVA2015': 'million',
+      'GVA2010': 'million',
+      'GVA2005': 'million',
       'workplace_pop': 'people',
       'latitude': ''
     };
@@ -60,7 +63,7 @@ export const themes = {
       [-6, 49 ],
       [ 2, 56 ]
     ],
-    teesside:[ //For info, we found this bounding box by printing it to the console.log() -- slicker methods are available.
+    teesside:[ //For info, we found this bounding box by printing it to the console.log() -- more elegant methods are available.
       [-2.3554797697697483, 54.45116956940452], 
       [-0.7886222700970285, 54.91869752925054]
     ]
