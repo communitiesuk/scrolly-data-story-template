@@ -279,7 +279,7 @@ getData('./data/data_lsoa.csv')
                         {document.getElementById('points-legend').style = 'display: block; left: 60%, width: 35%; position: absolute'}
                         <MapLayer
                             id="point-circle"
-                            idKey="code"
+                            idKey="GeoCode"
                             type="circle"
                             hover {hovered_point} on:hover={doHover}
                             paint={{
