@@ -52,6 +52,7 @@
 		Example text.
 	</p>
 </Section>
+<MoveMap/>
 
 <Section>
 	<h2>Compare Metrics</h2>
