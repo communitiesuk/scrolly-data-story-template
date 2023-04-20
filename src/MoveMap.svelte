@@ -62,6 +62,11 @@
 	let mapKey = "GVA"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
+    //Need these to be reactive.
+    $: hover_name_finder(mapKey);
+	$: hover_data_finder(mapKey);
+    $: map_variable_lookup;
+
 //For the scatter/jitter plots, let's attempt to do LAD and MSOA in the same frame.
 getData('./data/data_lad.csv')
 	.then(arr => {
