@@ -65,6 +65,8 @@
     $: hover_name_finder(mapKey);
 	$: hover_data_finder(mapKey);
     $: map_variable_lookup;
+    $: hovered_lad;
+    $: hover_dict;
 
 //For the scatter/jitter plots, let's attempt to do LAD and MSOA in the same frame.
 getData('./data/data_lad.csv')
@@ -178,7 +180,7 @@ getTopo(topojson, 'data').then(geo => {
 						}}
 					>
 					<MapTooltip content = {
-								"This should be constat, but show" 
+								hovered_lad ? `${metadata.lad.lookup[hovered_lad].name}<br/><strong>${data.lad.indicators.find(d => d.code == hovered_lad)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
 							}
 					/>
 					</MapLayer>
