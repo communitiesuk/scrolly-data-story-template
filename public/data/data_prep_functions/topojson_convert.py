@@ -29,6 +29,12 @@ def topojson(file_in, file_out, code_col="auto"):
     tp.Topology(shape).to_json(file_out)
     
 
-topojson("LA_centroid.geojson", "../LA_centroid.json")
 topojson("tees_lsoas.geojson", '../tees_lsoas.json')
 topojson("Local_Authority_Districts_December_2021_GB_BUC_2022_1023427260691650215.geojson", "../LAD.json")
+
+#For the point data, use a different write to file.
+shape = geopandas.read_file("LA_centroid.geojson")
+shape = shape.to_crs('EPSG:4326')
+code_col = get_code_column(shape)
+shape.columns = shape.columns.str.replace(code_col, "GeoCode")
+shape.to_file("../LA_centroid.json", driver="GeoJSON")  
