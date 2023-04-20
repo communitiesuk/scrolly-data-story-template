@@ -253,13 +253,6 @@ getTopo(topojson, 'data').then(geo => {
 	
 			</Map>
 			</div>
-			<ColourScaleLegend 
-				map_key = 'lat'
-				hov = {hover_dict[map_variable_lookup[mapKey].geography]}
-				highlighted_val = {(hover_dict[map_variable_lookup[mapKey].geography])? ((hover_data_finder(mapKey) == 'Data unavailable')? '-' : hover_data_finder(mapKey)): ''}
-				scale_text =  {(hover_dict[map_variable_lookup[mapKey].geography])? map_variable_lookup[mapKey]['full_name'] + ' for ' + hover_name_finder(mapKey) + ': ': '\n'}
-				
-			/>
 		</figure>
 	</div>
 	<div slot="foreground">
