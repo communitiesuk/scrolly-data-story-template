@@ -130,6 +130,7 @@ getData('./data/data_lsoa.csv')
 			let indicators = arr.map((d, i) => ({
 				...meta[i],
                 GVA2020: d.GVA2020,
+                GVA2020_faint: d.GVA2020,
                 GVA2015: d.GVA2015,
                 GVA2010: d.GVA2010,
                 GVA2005: d.GVA2005,
@@ -138,6 +139,9 @@ getData('./data/data_lsoa.csv')
 
             ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop'].forEach(key => {
                 indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
+				});
+                ['GVA2020_faint'].forEach(key => {
+                indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup['GVA2020'].scale, colors.seq_tr_20));
 				});
 			
 				data.lsoa.indicators = indicators;
@@ -179,7 +183,7 @@ getData('./data/data_lsoa.csv')
 			},
             map02: () => {
 				fitBounds(mapbounds.teesside, map);
-				mapKey = "GVA2020";
+				mapKey = "GVA2020_faint";
 				mapHighlighted = [];
 				explore = false;
 			}		}
@@ -275,7 +279,7 @@ getData('./data/data_lsoa.csv')
                         {document.getElementById('points-legend').style = 'display: block; left: 60%, width: 35%; position: absolute'}
                         <MapLayer
                             id="point-circle"
-                            idKey="ID"
+                            idKey="code"
                             type="circle"
                             hover {hovered_point} on:hover={doHover}
                             paint={{
@@ -290,7 +294,11 @@ getData('./data/data_lsoa.csv')
                                 'circle-radius':6
                                 }}
                             >
-                        </MapLayer>
+                            <MapTooltip content = {
+								hovered_point ? `${metadata.point.lookup[hovered_lsoa].name}` : ''
+							}
+					/>
+                </MapLayer>
                     {/if}
                     {#if index==0}
                     {document.getElementById('points-legend').style = 'display: none; left: 60%, width: 35%; position: absolute'}
