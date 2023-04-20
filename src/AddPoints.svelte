@@ -137,11 +137,8 @@ getData('./data/data_lsoa.csv')
                 workplace_pop: d.workplace_pop,
 			}));
 
-            ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop'].forEach(key => {
+            ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop', 'GVA2020_faint'].forEach(key => {
                 indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
-				});
-                ['GVA2020_faint'].forEach(key => {
-                indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup['GVA2020'].scale, colors.seq_tr_20));
 				});
 			
 				data.lsoa.indicators = indicators;
