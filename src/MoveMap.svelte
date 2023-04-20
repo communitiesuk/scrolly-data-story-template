@@ -178,7 +178,7 @@ getTopo(topojson, 'data').then(geo => {
 						}}
 					>
 					<MapTooltip content = {
-								hovered_lad ? `${metadata.lad.lookup[hovered_lad].name}<br/><strong>${data.lad.indicators.find(d => d.code == hovered_lad)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
+								`${hovered_lad}` 
 							}
 					/>
 					</MapLayer>
