@@ -43,7 +43,7 @@
 
     // Constants
 	const datasets = ["lad", "msoa"];
-	const topojson = "./data/UTLA_simplified.json";
+	const topojson = "./data/LAD.json";
 	const mapstyle = "https://bothness.github.io/ons-basemaps/data/style-omt.json";
 
 // Data
@@ -204,7 +204,7 @@ getTopo(topojson, 'data').then(geo => {
 				hov = {hover_dict[map_variable_lookup[mapKey].geography]}
 				highlighted_val = {(hover_dict[map_variable_lookup[mapKey].geography])? ((hover_data_finder(mapKey) == 'Data unavailable')? '-' : hover_data_finder(mapKey)): ''}
 				scale_text =  {(hover_dict[map_variable_lookup[mapKey].geography])? map_variable_lookup[mapKey]['full_name'] + ' for ' + hover_name_finder(mapKey) + ': ': '\n'}
-				imd_rank_text = {((hover_dict[map_variable_lookup[mapKey].geography]) && (mapKey == "imd_avg_score" || mapKey == "imd_avg_score_LSOA"))? imd_rank_text_finder(mapKey): ''}	
+				
 			/>
 		</figure>
 	</div>
