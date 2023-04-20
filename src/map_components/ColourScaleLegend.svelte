@@ -1,5 +1,5 @@
 <script>
-    import { colors, units } from "../config.js";
+   import { map_variable_lookup, colors, units } from "./config.js";
 	export let scale_text = '';
 	export let max_val = 100;
     export let min_val = 0;
