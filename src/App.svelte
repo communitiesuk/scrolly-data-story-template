@@ -21,6 +21,7 @@
 	import MoveMap from "./MoveMap.svelte";
 	import MapSpread from "./MapSpread.svelte";
 	import Chorpleths from "./Chorpleths.svelte";
+    import ZoomMap from "./ZoomMap.svelte";
 
 </script>
 
@@ -44,7 +45,7 @@
 	
 </Section>
 
-<Chorpleths/>
+<ZoomMap/>
 
 <Section>
 	<h2>Zoom into an Area</h2>
@@ -52,7 +53,6 @@
 		Example text.
 	</p>
 </Section>
-<MoveMap/>
 
 <Section>
 	<h2>Compare Metrics</h2>
