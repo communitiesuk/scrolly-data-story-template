@@ -3,6 +3,9 @@ import { feature } from 'topojson-client';
 import { bbox, union } from '@turf/turf';
 import { map_variable_lookup } from './config';
 
+export let hov = ''; 
+export let hover_dict = {};
+
 export function setColors(themes, theme) {
     for (let color in themes[theme]) {
       document.documentElement.style.setProperty('--' + color, themes[theme][color]);
