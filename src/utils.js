@@ -40,6 +40,21 @@ export function setColors(themes, theme) {
     });
   }
 
+  export function getColor(value, breaks, colors) {
+    let color;
+    let found = false;
+    let i = 1;
+    while (found == false) {
+      if ((value <= breaks[i])  || (i == breaks.length + 1)) {
+        color = colors[i - 1];
+        found = true;
+      } else {
+        i ++;
+      }
+    }
+    return color ? color : 'rgb(232, 237, 234)';
+  }
+
 
   	// Functions for map component
 	export function fitBounds(bounds , map_id) {
