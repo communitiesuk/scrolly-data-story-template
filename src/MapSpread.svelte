@@ -76,7 +76,7 @@ export function doHover_chart(e) {
 }
 
 export let hover_data_finder = function(mapKey){
-  let geography_key = map_variable_lookup[mapKey].geography;
+  let geography_key = map_variable_lookup.lat.geography;
   hov = hover_dict[geography_key]
   if (hov){
     let hover_data = data[geography_key].indicators?.find(d => d.code == hov)[mapKey]
@@ -90,7 +90,7 @@ export let hover_data_finder = function(mapKey){
   return "";
 }
 export let hover_name_finder = function(mapKey){
-  let geography_key = map_variable_lookup[mapKey].geography;
+  let geography_key = map_variable_lookup.lat.geography;
   hov = hover_dict[geography_key]
   if (hov) {
     return metadata[geography_key].lookup[hov].name
@@ -228,7 +228,7 @@ getTopo(topojson, 'data').then(geo => {
 						}}
 					>
 					<MapTooltip content = {
-								hovered_lad ? `${metadata.lad.lookup[hovered_lad].name}<br/><strong>${data.lad.indicators.find(d => d.code == hovered_lad)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
+								hovered_lad ? `${metadata.lad.lookup[hovered_lad].name}<br/><strong>${data.lad.indicators.find(d => d.code == hovered_lad)[mapKey].toLocaleString()} ${units.lat}</strong>` : ''
 							}
 					/>
 					</MapLayer>
@@ -254,7 +254,7 @@ getTopo(topojson, 'data').then(geo => {
 			</Map>
 			</div>
 			<ColourScaleLegend 
-				map_key = {mapKey}
+				map_key = 'lat'
 				hov = {hover_dict[map_variable_lookup[mapKey].geography]}
 				highlighted_val = {(hover_dict[map_variable_lookup[mapKey].geography])? ((hover_data_finder(mapKey) == 'Data unavailable')? '-' : hover_data_finder(mapKey)): ''}
 				scale_text =  {(hover_dict[map_variable_lookup[mapKey].geography])? map_variable_lookup[mapKey]['full_name'] + ' for ' + hover_name_finder(mapKey) + ': ': '\n'}
