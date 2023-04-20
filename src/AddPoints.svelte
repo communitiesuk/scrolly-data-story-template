@@ -271,7 +271,7 @@ getData('./data/data_lsoa.csv')
                 id="point"
                 type="geojson"
                 data={point_geo}
-                promoteId="ID"
+                promoteId="GeoCode"
                 maxzoom={13}>
                     {#if offset > 0.1 && index > 0} 
                         {document.getElementById('points-legend').style = 'display: block; left: 60%, width: 35%; position: absolute'}
