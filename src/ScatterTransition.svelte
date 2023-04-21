@@ -198,6 +198,7 @@ getData('./data/data_scatter.csv')
 	<div slot="foreground">
 		<section data-id="chart01">
 			<div class="col-medium">
+                <a id="ScatterTransition" style="color: black"><br><br></a>
 				<p>
 					LAD GVA
 				</p>

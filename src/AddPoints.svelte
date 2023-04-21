@@ -315,6 +315,7 @@ getData('./data/data_lsoa.csv')
 	<div slot="foreground">
 		<section data-id="map01">
 			<div class="col-medium">
+                <a id="AddPoints" style="color: black"><br><br></a>
 				<p>
 					This is LSOA data for GVA.
 				</p>

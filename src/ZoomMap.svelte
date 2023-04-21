@@ -345,6 +345,7 @@ getTopo(topojson, 'data').then(geo => {
 	<div slot="foreground">
 		<section data-id="map01">
 			<div class="col-medium">
+                <a id="ZoomMap" style="color: black"><br><br></a>
 				<p>
 					This LAD GVA
 				</p>

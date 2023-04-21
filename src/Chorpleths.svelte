@@ -264,8 +264,9 @@ getTopo(topojson, 'data').then(geo => {
 	<div slot="foreground">
 		<section data-id="map01">
 			<div class="col-medium">
+				<a id="Choropleths" style="color: black"><br><br></a>
 				<p>
-					202 GVA
+					2020 GVA
 				</p>
 			</div>
 		</section>

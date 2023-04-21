@@ -59,81 +59,89 @@
 </div>
 
 <Section>
-	<a id="MoveMap" style="color: black"><br><br></a>
-	<h2>National picture</h2>
+	<h2>Scrolling data storytelling templates</h2>
 	<p class="mb">
-		Example text.
+		In this page, we have a set of interactive data storytelling templates. These can be used as examples to tell various kinds of story with data.
 	</p>
+	
+</Section>
+
+
+<Section>
+	<h2>Move around and highlight places of interest</h2>
+	<p class="mb">
+		This is a map with a single data source on it. We can move around the map and point out interesting places.
+	</p>
+	<p>This can be used to tell stories about the differences in the best/worst performing areas and show where they are.</p>
 	
 </Section>
 
 <MoveMap/>
 
 <Section>
-	<a id="ZoomMap" style="color: black"><br><br></a>
-	<h2>Zoom into an Area</h2>
+	<h2>Zoom into an area</h2>
 	<p class="mb">
-		Example text.
+		This contains two levels of geography. The map dynamically zooms into a lower level of geography. 
 	</p>
+	<p>This can be used to draw the link between national patterns and what it going on in local areas.</p>
 </Section>
 
 <ZoomMap/>
 
 <Section>
-	<a id="Choropleths" style="color: black"><br><br></a>
-	<h2>Compare Metrics</h2>
+	<h2>Compare metrics</h2>
 	<p class="mb">
-		Example text.
+		This maps shows a few different metrics for the same areas.
 	</p>
+	<p>This can be used to highlight similarities between the spatial patterns for different metrics -- that the same places are affected by different issues.</p>
 </Section>
 
 <Chorpleths/>
 
 <Section>
-	<a id="AddPoints" style="color: black"><br><br></a>
-	<h2>Highlight places of interest</h2>
+	<h2>Add points to a map</h2>
 	<p class="mb">
-		Example text.
+		This map shows a local area. Then it dynamically adds points on top of the existing map.
 	</p>
+	<p>This can be used to show the context and then add data for individual projects or sites, which can be used to tell a story about what we're doing about that background context.</p>
 </Section>
 
 <AddPoints/>
 
 <Section>
-	<a id="MapSpread" style="color: black"><br><br></a>
-	<h2>Highlight places of interest</h2>
+	<h2>Map spread</h2>
 	<p class="mb">
-		Example text.
+		In this template, we show changes moving across a map. In the example, this is local authorities split into quinitiles based on latitude.
 	</p>
+	<p>This can be used to show changes over time, and used scroll through to show areas which see change.</p>
 </Section>
 
 <MapSpread/>
 
 <Section>
-	<a id="MoveData" style="color: black"><br><br></a>
-	<h2>Highlight places of interest</h2>
+	<h2>Move data around and add new variables</h2>
 	<p class="mb">
-		Example text.
+		This is a scatter chart which goes through adjustments of what we show on the axes.
 	</p>
+	<p>This can be used to show patterns emerging as we contrast with different sources of data.</p>
 </Section>
 
 <MoveData/>
 
 <Section>
-	<a id="ScatterTransition" style="color: black"><br><br></a>
-	<h2>Highlight places of interest</h2>
+	<h2>An animated transition between plots</h2>
 	<p class="mb">
-		Example text.
+		This is an example of changing between two related datasets. In this case, we use the same x-axis, so the local authority and LSOA data move straight up and down to transition from one frame to the next.
 	</p>
+	<p>This is a transition to draw together two datasets into a single scrolling element.</p>
 </Section>
 
 <ScatterTransition/> 
 
 <Section>
-	<a id="TimeSeries" style="color: black"><br><br></a>
-	<h2>Highlight places of interest</h2>
+	<h2>Time series scrolling</h2>
 	<p class="mb">
-		Example text.
+		This is an exmaple of using scrolling to explore time series on an interactive scatter chart. 
 	</p>
 </Section>
 
