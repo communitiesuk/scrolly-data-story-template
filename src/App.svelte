@@ -141,15 +141,17 @@
 <Section>
 	<h2>Time series scrolling</h2>
 	<p class="mb">
-		This is an exmaple of using scrolling to explore time series on an interactive scatter chart. 
+		This is an example of using scrolling to explore time series on an interactive scatter chart. 
 	</p>
 </Section>
 
 <TimeSeries/>
 
+<Divider/>
 
-
+<ONSFooter />
 <style>
+	
 	:global(svelte-scroller-foreground) {
 		pointer-events: none !important;
 		max-width: 100% !important;
