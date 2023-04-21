@@ -25,6 +25,7 @@
 	import AddPoints from "./AddPoints.svelte";
 	import MoveData from "./MoveData.svelte";
     import TimeSeries from "./TimeSeries.svelte";
+	import ScatterTransition from "./ScatterTransition.svelte";
 	
 
 </script>
@@ -49,7 +50,7 @@
 	
 </Section>
 
-<TimeSeries/>
+<ScatterTransition/>
 
 <Section>
 	<h2>Zoom into an Area</h2>

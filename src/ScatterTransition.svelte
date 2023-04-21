@@ -40,11 +40,13 @@
     let hovered_lsoa; // Hovered lsoa (chart or map)
 
     let hovered;
-	let xKey = "jitter"; // xKey for scatter chart
-	let yKey = "GVA2020"; // yKey for scatter chart
-	let zKey = "LAD_name"; // zKey (color) for scatter chart
+	let xKey = "rank"; // xKey for scatter chart
+	let yKey = "GVA"; // yKey for scatter chart
+	let zKey = null; // zKey (color) for scatter chart
 	let rKey = null; // rKey (radius) for scatter chart
     let explore = false; // Allows chart/map interactivity to be toggled on/off
+    let plot_yMax = 79;
+    let ySuffix=" million";
 	
 
     	// Functions for chart and map on:select and on:hover events
@@ -84,7 +86,7 @@ export let hover_name_finder = function(mapKey){
     $: hover_dict;
 
 //For the scatter/jitter plots, let's attempt to do lsoa and MSOA in the same frame.
-getData('./data/data_lsoa.csv')
+getData('./data/data_scatter.csv')
 	.then(arr => {
 		let meta = arr.map(d => ({
 				code: d.code,
@@ -100,18 +102,10 @@ getData('./data/data_lsoa.csv')
 			let indicators = arr.map((d, i) => ({
 				...meta[i],
                 GVA2020: d.GVA2020,
-                GVA2015: d.GVA2015,
-                GVA2010: d.GVA2010,
-                GVA2005: d.GVA2005,
-				jitter: d.jitter,
-				LAD_name: d["LAD name"],
-                workplace_pop: d.workplace_pop,
+                GVA: d.GVA,
+                rank: d.rank,
 			}));
-
-            ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop'].forEach(key => {
-                indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
-				});
-			
+		
 				data.lsoa.indicators = indicators;
 			});
 
@@ -123,38 +117,21 @@ getData('./data/data_lsoa.csv')
 	const actions = {
 		chart: { // Actions for <Scroller/> with id="map"
 		chart01: () => {
-				xKey = "jitter";
-				yKey = "GVA2020";
-				zKey = "LAD_name";
+				xKey = "rank";
+				yKey = "GVA";
+                ySuffix="";
+				zKey = null;
                 rKey = null;
+                plot_yMax = 79;
 				explore = false;
 			},
 			chart02: () => {
-				xKey = "jitter";
-				yKey = "GVA2015";
-				zKey = "LAD_name";
-                rKey = null;
-				explore = false;
-			},
-			chart03: () => {
-				xKey = "jitter";
-				yKey = "GVA2010";
-				zKey = "LAD_name";
-                rKey = null;
-				explore = false;
-			},
-			chart04: () => {
-				xKey = "jitter";
-				yKey = "GVA2005";
-				zKey = "LAD_name";
-                rKey = null;
-				explore = false;
-			},
-			chart05: () => {
-				xKey = "jitter";
+				xKey = "rank";
 				yKey = "GVA2020";
-				zKey = "LAD_name";
+                ySuffix=" million";
+				zKey = null;
                 rKey = null;
+                plot_yMax = 950;
 				explore = false;
 			}
 		}
@@ -192,20 +169,27 @@ getData('./data/data_lsoa.csv')
                         padding.top = 40
 						{xKey} {yKey} {zKey} {rKey} idKey="code" labelKey="name"
 						r={[5]}
-                        yMax = 950
-						yScale = 'log'
-						xMax = 7
-						xMin = 0
-						xTicks = []
-						ySuffix=" million"
+                        yMax = {plot_yMax}
+                        yMin = 0
+						ySuffix={ySuffix}
 						yFormatTick={d => d.toLocaleString()}
 						legend={zKey != null} labels
 						select={explore} selected={explore ? selected : null} 
 						hover {hovered} on:hover={doHover_chart}
 						colorSelect="#206095" colorHighlight="#999" overlayFill
 						{animation}/>
-						<div class="label label-y outline" style="left: 0%; top: 15%;">GVA (log scale)</div>
+						<div class="label label-y outline" style="left: 0%; top: 15%;">
+                            {#if yKey == "GVA"}
+                             GVA per job filled
+                             {:else}
+                            Total GVA
+                             {/if}
+                             </div>
+                        {#if yKey == "GVA2020"}    
 						<div class="label label-title" style="top: 90%;">GVA for LSOAs</div>
+                        {:else}
+						<div class="label label-title" style="top: 90%;">GVA per job filled for Local Authorities</div>
+                        {/if}
 					</div>
 				
 			</div>
@@ -236,42 +220,6 @@ getData('./data/data_lsoa.csv')
 				</p>
 				<p>
 					The chart shows male life expectancy for MSOAs in Hull, grouped by their Index of Multiple Deprivation.
-				</p>
-			</div>
-		</section>
-		<section data-id="chart03">
-			<div class="col-medium">
-				<a id="SubSect_LocalScatter" style="color: black"><br><br></a>
-				<h2>Locally, health inequalities are correlated with spatial inequalities and deprivation </h2>
-				<p>
-					At local level, those areas with the lowest levels of life expectancy are also the areas with the highest levels of deprivation.  
-				</p>
-				<p>
-					The chart shows male life expectancy for MSOAs in Hull against their Index of Multiple Deprivation.
-				</p>
-			</div>
-		</section>
-		<section data-id="chart04">
-			<div class="col-medium">
-				<a id="SubSect_LocalScatter" style="color: black"><br><br></a>
-				<h2>Locally, health inequalities are correlated with spatial inequalities and deprivation </h2>
-				<p>
-					At local level, those areas with the lowest levels of life expectancy are also the areas with the highest levels of deprivation.  
-				</p>
-				<p>
-					The chart shows male life expectancy for MSOAs in Hull against their Index of Multiple Deprivation.
-				</p>
-			</div>
-		</section>
-		<section data-id="chart05">
-			<div class="col-medium">
-				<a id="SubSect_LocalScatter" style="color: black"><br><br></a>
-				<h2>Locally, health inequalities are correlated with spatial inequalities and deprivation </h2>
-				<p>
-					At local level, those areas with the lowest levels of life expectancy are also the areas with the highest levels of deprivation.  
-				</p>
-				<p>
-					The chart shows male life expectancy for MSOAs in Hull against their Index of Multiple Deprivation.
 				</p>
 			</div>
 		</section>

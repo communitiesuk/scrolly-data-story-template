@@ -101,8 +101,8 @@ write.csv(points_data, "../data_points.csv", row.names = F)
 
 lad_cut = la_data[,c('code', 'name', 'GVA', 'rank')]
 lsoa_cut = lsoa_data[,c('code', 'name', 'GVA2020', 'rank')]
-lsoa_cut$GVA = -50
-lad_cut$GVA2020 = -50
+lsoa_cut$GVA = -500
+lad_cut$GVA2020 = -500
 rank_data = rbind(lad_cut, lsoa_cut)
 write.csv(rank_data, "../data_scatter.csv", row.names=F)
 
