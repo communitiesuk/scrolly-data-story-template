@@ -315,27 +315,15 @@ getData('./data/data_lsoa.csv')
 	<div slot="foreground">
 		<section data-id="map01">
 			<div class="col-medium">
-				<a id="SubSect_HLE" style="color: black"><br><br></a>
-				<h2>Low levels of healthy life expectancy</h2>
 				<p>
-					The map shows local authority districts in the UK, shaded according to the expected average years of male ‘Healthy Life Expectancy’ (HLE) in each area.
-				</p>
-				<p>
-					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the lowest (worst) levels of HLE, <Em color={colors.seq_5[0]}>light yellow</Em> the highest. Areas such as Rutland have 19 more years of healthy life expectancy than areas such as Hull.
+					This is LSOA data for GVA.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
-				<a id="SubSect_LE" style="color: black"><br><br></a>
-				<h2>Low levels of life expectancy</h2>
-				
 				<p>
-					The map shows Middle Super Output Areas (MSOAs) in Hull, shaded according to the expected average years of male life expectancy at birth in each area.  
-				</p>
-				<p>
-					
-					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the lowest (worst) levels of life expectancy, <Em color={colors.seq_5[0]}>light yellow</Em> the highest. Local areas such as Kingston upon Hull 012 (University & Newland North) have 11 more years of life expectancy than areas such as Kingston upon Hull 030 (Boulevard & St Andrew's Quay).  
+                    Add points. These are LA centroids.
 				</p>
 			</div>
 		</section>

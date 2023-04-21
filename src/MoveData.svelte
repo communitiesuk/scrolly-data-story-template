@@ -206,40 +206,22 @@ getData('./data/data_lsoa.csv')
 	<div slot="foreground">
 		<section data-id="chart01">
 			<div class="col-medium">
-				<a id="SubSect_NatJitter" style="color: black"><br><br></a>
-				<h2>Nationally, health inequalities are correlated with spatial inequalities and deprivation </h2>
 				<p>
-					Spatial inequalities severely limit the UK's productivity and opportunities for economic growth.   
-				</p>
-				<p>
-					The areas in England with the lowest levels of healthy life expectancy are also the areas with the highest levels of deprivation.  
-				</p>
-				<p>
-					The chart shows healthy male life expectancy for local areas in England, grouped by their Index of Multiple Deprivation.
+					GVA on its own
 				</p>
 			</div>
 		</section>
 		<section data-id="chart02">
 			<div class="col-medium">
-				<a id="SubSect_LocalJitter" style="color: black"><br><br></a>
-				<h2>Locally, health inequalities are correlated with spatial inequalities and deprivation </h2>
 				<p>
-					At local level, those areas with the lowest levels of life expectancy are also the areas with the highest levels of deprivation.  
-				</p>
-				<p>
-					The chart shows male life expectancy for MSOAs in Hull, grouped by their Index of Multiple Deprivation.
+					Add workplace population
 				</p>
 			</div>
 		</section>
 		<section data-id="chart03">
 			<div class="col-medium">
-				<a id="SubSect_LocalScatter" style="color: black"><br><br></a>
-				<h2>Locally, health inequalities are correlated with spatial inequalities and deprivation </h2>
 				<p>
-					At local level, those areas with the lowest levels of life expectancy are also the areas with the highest levels of deprivation.  
-				</p>
-				<p>
-					The chart shows male life expectancy for MSOAs in Hull against their Index of Multiple Deprivation.
+					Move GVA from the 2020 to 2015 numbers
 				</p>
 			</div>
 		</section>

@@ -150,19 +150,19 @@ getTopo(topojson, 'data').then(geo => {
 				explore = false;
 			},
 			map02: () => {
-				fitById("E06000010", map, geojson);
+				fitById("W06000023", map, geojson);
 				mapKey = "GVA";
 				mapHighlighted = [];
 				explore = false;
 			},
 			map03: () => {
-				fitById("E06000030", map, geojson);
+				fitById("E07000092", map, geojson);
 				mapKey = "GVA";
 				mapHighlighted = [];
 				explore = false;
 			},
 			map04: () => {
-				fitById("E06000004", map, geojson);
+				fitFeatures(["E09000001", "E09000030"], map, geojson);
 				mapKey = "GVA";
 				mapHighlighted = [];
 				explore = false;
@@ -255,57 +255,29 @@ getTopo(topojson, 'data').then(geo => {
 	<div slot="foreground">
 		<section data-id="map01">
 			<div class="col-medium">
-				<a id="SubSect_HLE" style="color: black"><br><br></a>
-				<h2>Low levels of healthy life expectancy</h2>
 				<p>
-					The map shows local authority districts in the UK, shaded according to the expected average years of male ‘Healthy Life Expectancy’ (HLE) in each area.
+					National map.
 				</p>
-				<p>
-					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the lowest (worst) levels of HLE, <Em color={colors.seq_5[0]}>light yellow</Em> the highest. Areas such as Rutland have 19 more years of healthy life expectancy than areas such as Hull.
-				</p>
-<!-- Remove the zoom reset button
-					<button class="text-small" on:click={() => fitBounds(mapbounds.england, map)}>
-					<img src="./data/icon-reset.svg" class="svg-icon" alt="" aria-hidden="true"/>Reset zoom
-				</button>
-				-->
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
-				<a id="SubSect_LE" style="color: black"><br><br></a>
-				<h2>Low levels of life expectancy</h2>
-				
 				<p>
-					The map shows Middle Super Output Areas (MSOAs) in Hull, shaded according to the expected average years of male life expectancy at birth in each area.  
-				</p>
-				<p>
-					
-					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the lowest (worst) levels of life expectancy, <Em color={colors.seq_5[0]}>light yellow</Em> the highest. Local areas such as Kingston upon Hull 012 (University & Newland North) have 11 more years of life expectancy than areas such as Kingston upon Hull 030 (Boulevard & St Andrew's Quay).  
+					This is Powys with the lowest GVA.
 				</p>
 			</div>
 		</section>
 		<section data-id="map03">
 			<div class="col-medium">
-				<a id="SubSect_prevdeath" style="color: black"><br><br></a>
-				<h2>High levels of preventable deaths </h2>
-				
 				<p>
-					The map shows MSOAs in Hull, shaded according to the average rate of preventable deaths in each area, compared to the average for England. 
-				</p>
-				<p>
-					<Em color={colors.seq_5[4]}>Dark blue</Em> areas have the highest (worst) levels of preventable deaths, <Em color={colors.seq_5[0]}>light yellow</Em> the lowest.  
+					Rushmoor has highest.
 				</p>
 			</div>
 		</section>
 		<section data-id="map04">
 			<div class="col-medium">
-				<a id="SubSect_obesity" style="color: black"><br><br></a>
-				<h2>High levels of child obesity</h2>
 				<p>
-					The map shows MSOAs in Hull, shaded according to the average levels of child obesity in each area.  
-				</p>
-				<p>
-					Again, <Em color={colors.seq_5[4]}>dark blue</Em> areas have the highest (worst) levels of child obesity, <Em color={colors.seq_5[0]}>light yellow</Em> the lowest. 
+					Zoom to a group -- this fits City of London and Tower Hamlets, both in the top 5 GVA per job filled.
 				</p>
 			</div>
 		</section>
