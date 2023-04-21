@@ -43,7 +43,7 @@
 	let xKey = "GVA2020"; // xKey for scatter chart
 	let yKey = null; // yKey for scatter chart
 	let zKey = null; // zKey (color) for scatter chart
-	let rKey = 0.5; // rKey (radius) for scatter chart
+	let rKey = null; // rKey (radius) for scatter chart
     let explore = false; // Allows chart/map interactivity to be toggled on/off
 	
 
@@ -124,18 +124,21 @@ getData('./data/data_lsoa.csv')
 				xKey = "GVA2020";
 				yKey = null;
 				zKey = null;
+                rKey = null;
 				explore = false;
 			},
             chart02: () => {
 				xKey = "GVA2020";
 				yKey = "workplace_pop";
 				zKey = null;
+                rKey = null;
 				explore = false;
 			},
             chart03: () => {
 				xKey = "GVA2010";
 				yKey = "workplace_pop";
 				zKey = null;
+                rKey = null;
 				explore = false;
 			}
 		}
@@ -162,40 +165,37 @@ getData('./data/data_lsoa.csv')
 <Scroller {threshold} bind:id={id['chart']} splitscreen={true}>
 	<div slot="background">
 		<figure>
-<!--			<div class="label" style="left: 30%; top: 10%;">&larr; Less deprived</div>
-			<div class="label" style="left: 65%; top: 10%;">More deprived &rarr;</div>
-	-->		
-			<div class="col-wide height-full">
+			<div class="label" style="left: 20%; top: 85%;">&larr; Lower GVA</div>
+			<div class="label" style="left: 65%; top: 85%;">Higher GVA &rarr;</div>
+			
+			<div class="col-full height-full">
 				
 					<div class="chart">
 						<ScatterChart
 						height="calc(100vh - 150px)"
 						data={data.lsoa.indicators}
 						colors={explore ? ['lightgrey'] : colors.cat}
+                        padding.top = 40
 						{xKey} {yKey} {zKey} {rKey} idKey="code" labelKey="name"
+                        xScale = "log"
 						r={[5]}
-						ySuffix=" years"
+                        yMax = 17000
+						ySuffix=" people"
 						yFormatTick={d => d.toLocaleString()}
 						legend={zKey != null} labels
 						select={explore} selected={explore ? selected : null} 
 						hover {hovered} on:hover={doHover_chart}
 						colorSelect="#206095" colorHighlight="#999" overlayFill
 						{animation}/>
-						{#if yKey=='male_HLE'}
-						<div class="label label-y outline" style="left: calc(20px + 5%); top: 80px;">Higher healthy life expectancy &rarr;</div>
-						{:else if yKey == "male_le"}
-						<div class="label label-y outline" style="left: calc(20px + 5%); top: 80px;">Higher life expectancy &rarr;</div>
-						{:else}
-						<div class="label label-y outline" style="left: calc(20px + 5%); top: 80px;">Higher life expectancy &rarr;</div>
-						{/if}
+						{#if yKey=='workplace_pop'}
+						<div class="label label-y outline" style="left: 0%; top: 15%;">Workplace Population</div>
 						
-						<div class="label label-title" style="top: 92%;">
-							{#if yKey == "male_HLE"}
-							Male Healthy Life Expectancy at birth (2018-2020) for English local authorities, grouped by Index of Multiple Deprivation decile (2019)
-							{:else if yKey == "male_le"}
-							Male Life Expectancy at birth (2016-2020) for MSOAs in Hull against Index of Multiple Deprivation (2019)
+						{/if}
+						<div class="label label-title" style="top: 90%;">
+							{#if yKey == "workplace_pop"}
+							GVA against workplace population for LSOAs
 							{:else}
-							Male Life Expectancy at birth (2016-2020) for MSOAs in Hull against Index of Multiple Deprivation (2019)
+							GVA for LSOAs
 							{/if}
 						</div>
 					</div>
@@ -248,11 +248,17 @@ getData('./data/data_lsoa.csv')
 {/if}
 
 <style>
-.label-title {
+	.label {
+		position: absolute;
+		font-size: 14px;
+		color: #666;
+	}
+    .label-title {
     color: #333;
     font-weight: bold;
 }
 .label-y {
+    position: absolute;
     top: 0px;
     text-align: right;
     -webkit-writing-mode: vertical-rl;
