@@ -23,6 +23,7 @@
 	import Chorpleths from "./Chorpleths.svelte";
     import ZoomMap from "./ZoomMap.svelte";
 	import AddPoints from "./AddPoints.svelte";
+	import MoveData from "./MoveData.svelte";
 
 </script>
 
@@ -46,7 +47,7 @@
 	
 </Section>
 
-<AddPoints/>
+<MoveData/>
 
 <Section>
 	<h2>Zoom into an Area</h2>
