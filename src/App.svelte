@@ -33,16 +33,33 @@
 <ONSHeader filled={true} center={false} />
 
 <Header bgcolor="#206095" bgfixed={true} theme="dark" center={false} short={true}>
-	<h1>Scolly Data Story Demo</h1>
+	<h1>Scrolly Data Story Demo</h1>
 	<p class="text-big" style="margin-top: 5px">
 		Interactive data story demonstration.		
 	</p>
 	<p style="margin-top: 20px">
-		March 2023
+		April 2023
 	</p>
 </Header>
 
+<div id="navpanel" class="floater">
+	<p class="initial"> <strong>Page navigation </strong></p>
+	<p class="hovered">
+	<b style="color: black"> Map elements </b> <br>
+	<a href="#MoveMap"> Move map around </a> <br>
+	<a href="#ZoomMap"> Zoom map in </a> <br>
+	<a href="#Choropleths"> Choropleths </a> <br>
+	<a href="#AddPoints"> Add points </a> <br>
+	<a href="#MapSpread"> Show map spread </a> <br>
+	<b style="color: black"> Scatter plots </b> <br>
+	<a href="#MoveData"> Move data around </a> <br>
+	<a href="#ScatterTransition"> Fancy transitions </a> <br>
+	<a href="#TimeSeries"> Show time series </a> <br>
+</p>
+</div>
+
 <Section>
+	<a id="MoveMap" style="color: black"><br><br></a>
 	<h2>National picture</h2>
 	<p class="mb">
 		Example text.
@@ -53,25 +70,75 @@
 <MoveMap/>
 
 <Section>
+	<a id="ZoomMap" style="color: black"><br><br></a>
 	<h2>Zoom into an Area</h2>
 	<p class="mb">
 		Example text.
 	</p>
 </Section>
 
+<ZoomMap/>
+
 <Section>
+	<a id="Choropleths" style="color: black"><br><br></a>
 	<h2>Compare Metrics</h2>
 	<p class="mb">
 		Example text.
 	</p>
 </Section>
 
+<Chorpleths/>
+
 <Section>
+	<a id="AddPoints" style="color: black"><br><br></a>
 	<h2>Highlight places of interest</h2>
 	<p class="mb">
 		Example text.
 	</p>
 </Section>
+
+<AddPoints/>
+
+<Section>
+	<a id="MapSpread" style="color: black"><br><br></a>
+	<h2>Highlight places of interest</h2>
+	<p class="mb">
+		Example text.
+	</p>
+</Section>
+
+<MapSpread/>
+
+<Section>
+	<a id="MoveData" style="color: black"><br><br></a>
+	<h2>Highlight places of interest</h2>
+	<p class="mb">
+		Example text.
+	</p>
+</Section>
+
+<MoveData/>
+
+<Section>
+	<a id="ScatterTransition" style="color: black"><br><br></a>
+	<h2>Highlight places of interest</h2>
+	<p class="mb">
+		Example text.
+	</p>
+</Section>
+
+<ScatterTransition/> 
+
+<Section>
+	<a id="TimeSeries" style="color: black"><br><br></a>
+	<h2>Highlight places of interest</h2>
+	<p class="mb">
+		Example text.
+	</p>
+</Section>
+
+<TimeSeries/>
+
 
 
 <style>
