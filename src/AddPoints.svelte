@@ -317,14 +317,14 @@ getData('./data/data_lsoa.csv')
 			<div class="col-medium">
                 <a id="AddPoints" style="color: black"><br><br></a>
 				<p>
-					This is LSOA data for GVA.
+					This is the LSOA data for GVA.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-                    Add points. These are LA centroids.
+                    We can add points on top. In this case, these are the centroids of Local Authorities, which aren't especially interesting. However, we can introduce a hover which tells us the name of each point alongside the legend which we can bring up on this transition.
 				</p>
 			</div>
 		</section>

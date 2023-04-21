@@ -200,14 +200,15 @@ getData('./data/data_scatter.csv')
 			<div class="col-medium">
                 <a id="ScatterTransition" style="color: black"><br><br></a>
 				<p>
-					LAD GVA
+					This charts shows the distribution of GVA per job filled by local authority district. The y-axis is the GVA, and we have arranged local authorities in order of GVA along the x axis.
+                    Hovering over the points shows the local authority name.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart02">
 			<div class="col-medium">
 				<p>
-					LSOA GVA
+					And this is a similar plot, but for LSOAs in Teesside. The transition moves the LAD data away and replaces it with the LSOA data.
 				</p>
 			</div>
 		</section>

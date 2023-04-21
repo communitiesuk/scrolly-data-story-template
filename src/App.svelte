@@ -33,9 +33,9 @@
 <ONSHeader filled={true} center={false} />
 
 <Header bgcolor="#206095" bgfixed={true} theme="dark" center={false} short={true}>
-	<h1>Scrolly Data Story Demo</h1>
+	<h1>Scrolly Data Story Templates</h1>
 	<p class="text-big" style="margin-top: 5px">
-		Interactive data story demonstration.		
+		Interactive data story templates.		
 	</p>
 	<p style="margin-top: 20px">
 		April 2023

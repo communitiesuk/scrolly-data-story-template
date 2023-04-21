@@ -260,35 +260,35 @@ getTopo(topojson, 'data').then(geo => {
 			<div class="col-medium">
 				<a id="MapSpread" style="color: black"><br><br></a>
 				<p>
-					The most Southern 20% of LADs in Great Britain.
+					The most Southern 20% of Local Authority Districts in Great Britain. We have split them into five groups, which allows us to animate a spread from south to north as an example.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-					40%
+					The southernmost 40%.
 				</p>
 			</div>
 		</section>
 		<section data-id="map03">
 			<div class="col-medium">
 				<p>
-					60%
+					The souterhmost 60%.
 				</p>
 			</div>
 		</section>
 		<section data-id="map04">
 			<div class="col-medium">
 				<p>
-					80% -- this is actually quite intereting how far south it goes.
+					This is now 80%. It is actually quite interesting how far south the borderline is.
 				</p>
 			</div>
 		</section>
 		<section data-id="map05">
 			<div class="col-medium">
 				<p>
-					And 100%
+					And 100%, which is obviously all of them.
 				</p>
 			</div>
 		</section>

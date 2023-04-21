@@ -257,14 +257,14 @@ getTopo(topojson, 'data').then(geo => {
 			<div class="col-medium">
 				<a id="MoveMap" style="color: black"><br><br></a>
 				<p>
-					National map.
+					This is a map of Local Authority Districts in Great Britain. They are shaded by GVA per job filled.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-					This is Powys with the lowest GVA.
+					This is Powys, which is the Local Authority with the lowest GVA.
 				</p>
 			</div>
 		</section>
@@ -278,7 +278,7 @@ getTopo(topojson, 'data').then(geo => {
 		<section data-id="map04">
 			<div class="col-medium">
 				<p>
-					Zoom to a group -- this fits City of London and Tower Hamlets, both in the top 5 GVA per job filled.
+					Now look to zoom to a group -- this fits in the City of London and Tower Hamlets, both in the top 5 GVA per job filled.
 				</p>
 			</div>
 		</section>

@@ -266,35 +266,35 @@ getTopo(topojson, 'data').then(geo => {
 			<div class="col-medium">
 				<a id="Choropleths" style="color: black"><br><br></a>
 				<p>
-					2020 GVA
+					This is GVA in LSOAs estimated in 2020.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-					2015 GVA
+					This is the 2015 GVA, which unsurprisingly is very similar to the 2020 values.
 				</p>
 			</div>
 		</section>
 		<section data-id="map03">
 			<div class="col-medium">
 				<p>
-					2010 GVA
+					And 2010 GVA.
 				</p>
 			</div>
 		</section>
 		<section data-id="map04">
 			<div class="col-medium">
 				<p>
-					2005 GVA
+					And also 2005 GVA.
 				</p>
 			</div>
 		</section>
 		<section data-id="map05">
 			<div class="col-medium">
 				<p>
-					2011 worklace population
+					This is the 2011 worklace population. Whilst this is a different metric to GVA, it shows a similar pattern as these are measuring which areas people go to for work.
 				</p>
 			</div>
 		</section>

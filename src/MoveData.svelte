@@ -208,21 +208,21 @@ getData('./data/data_lsoa.csv')
 			<div class="col-medium">
 				<a id="MoveData" style="color: black"><br><br></a>
 				<p>
-					GVA on its own
+					This is a cloud chart of GVA for LSOAs in Teesside on the x axis. We're using a log scale for GVA. This is the 2020 GVA.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart02">
 			<div class="col-medium">
 				<p>
-					Add workplace population
+					We can add workplace population on the y-axis. This moves the points for each local authority into place and gives further insight into the distribution of GVA. As expected, the LSOAs with high GVA also have large workplace populations.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart03">
 			<div class="col-medium">
 				<p>
-					Move GVA from the 2020 to 2015 numbers
+					We can change from the 2020 GVA values to 2015 numbers and see a small shift. On the whole, these show the same pattern.
 				</p>
 			</div>
 		</section>

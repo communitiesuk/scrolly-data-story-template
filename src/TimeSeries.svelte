@@ -214,36 +214,37 @@ getData('./data/data_lsoa.csv')
 	<div slot="foreground">
 		<section data-id="chart01">
 			<div class="col-medium">
+				<a id="TimeSeries" style="color: black"><br><br></a>
 				<p>
-					2020 GVA
+					This shows 2020 GVA for LSOAs in Teesside, dived up into Local Authorities.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart02">
 			<div class="col-medium">
 				<p>
-					Back to 2015
+					This is the 2015 data for the same set of LSOAs.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart03">
 			<div class="col-medium">
 				<p>
-					2010
+					And then we move back to 2010.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart04">
 			<div class="col-medium">
 				<p>
-					2005
+					And 2005.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart05">
 			<div class="col-medium">
 				<p>
-					And 2020 again
+					Finally, we can revert back to the 2020 values again.
 				</p>
 			</div>
 		</section>

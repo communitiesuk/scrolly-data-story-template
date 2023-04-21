@@ -33,14 +33,14 @@ export const themes = {
   }
 
   export const map_variable_lookup = {
-    'GVA': {'geography' : 'lad', 'full_name' : 'GVA', 'avg': 35.57, 'scale': [23.130, 29.828, 32.324, 35.504, 39.498, 73.950], 'scale_string': ["0 - 30 (thousand)", "30 - 60", "60 - 90", "90 - 120", "120 - 150"], 'scale_colours': colors.seq_5},
-    'workplace_pop': {'geography' : 'lsoa', 'full_name' : 'Workplace population', 'avg': 760, 'scale': [54, 163, 238, 354, 672, 16175], 'scale_string': ["0 - 30 (thousand)", "30 - 60", "60 - 90", "90 - 120", "120 - 150"], 'scale_colours': colors.seq_5},
-    'GVA_LSOA': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["1 - 4", "4 - 15", "15 - 60", "60 - 240", "240 - 950"], 'scale_colours': colors.seq_5},
-    'GVA2020': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["1 - 4", "4 - 15", "15 - 60", "60 - 240", "240 - 950"], 'scale_colours': colors.seq_5},
-    'GVA2020_faint': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["1 - 4", "4 - 15", "15 - 60", "60 - 240", "240 - 950"], 'scale_colours': colors.seq_tr_20},
-    'GVA2015': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["1 - 4", "4 - 15", "15 - 60", "60 - 240", "240 - 950"], 'scale_colours': colors.seq_5},
-    'GVA2010': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["1 - 4", "4 - 15", "15 - 60", "60 - 240", "240 - 950"], 'scale_colours': colors.seq_5},
-    'GVA2005': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["1 - 4", "4 - 15", "15 - 60", "60 - 240", "240 - 950"], 'scale_colours': colors.seq_5},
+    'GVA': {'geography' : 'lad', 'full_name' : 'GVA', 'avg': 35.57, 'scale': [23.130, 29.828, 32.324, 35.504, 39.498, 73.950], 'scale_string': ["23 - 30 (thousand)", "30 - 32", "32 - 35", "35 - 39", "39 - 75"], 'scale_colours': colors.seq_5},
+    'workplace_pop': {'geography' : 'lsoa', 'full_name' : 'Workplace population', 'avg': 760, 'scale': [54, 163, 238, 354, 672, 16175], 'scale_string': ["50 -160", "160 - 240", "240 - 350", "350 - 670", "670 - 16200"], 'scale_colours': colors.seq_5},
+    'GVA_LSOA': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["0 - 4", "4 - 7", "7 - 11", "11 - 25", "25 - 950"], 'scale_colours': colors.seq_5},
+    'GVA2020': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["0 - 4", "4 - 7", "7 - 11", "11 - 25", "25 - 950"], 'scale_colours': colors.seq_5},
+    'GVA2020_faint': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["0 - 4", "4 - 7", "7 - 11", "11 - 25", "25 - 950"], 'scale_colours': colors.seq_tr_20},
+    'GVA2015': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["0 - 4", "4 - 7", "7 - 11", "11 - 25", "25 - 950"], 'scale_colours': colors.seq_5},
+    'GVA2010': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["0 - 4", "4 - 7", "7 - 11", "11 - 25", "25 - 950"], 'scale_colours': colors.seq_5},
+    'GVA2005': {'geography' : 'lsoa', 'full_name' : 'GVA', 'avg': 50.34, 'scale': [0.22, 4.76, 7.23, 11.31, 25.09, 911.67], 'scale_string': ["0 - 4", "4 - 7", "7 - 11", "11 - 25", "25 - 950"], 'scale_colours': colors.seq_5},
     'lat': {'geography' : 'lad', 'full_name' : 'Latitude', 'avg': 0.5, 'scale': [-0.5, 0.5,1.5], 'scale_string': ["N", "Y"], 'scale_colours': colors.seq_2}
     }
 

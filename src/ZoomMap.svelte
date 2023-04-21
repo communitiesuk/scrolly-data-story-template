@@ -347,21 +347,21 @@ getTopo(topojson, 'data').then(geo => {
 			<div class="col-medium">
                 <a id="ZoomMap" style="color: black"><br><br></a>
 				<p>
-					This LAD GVA
+					This GVA at Local Authority District level.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-					LSOA GVA in Teesside
+					We can zoom into six LAs in Teesside and shows the GVA at LSOA level. Note this is total GVA. We are using a scale with equal sized bands, but there is a large skew in the GVA at LSOA level.
 				</p>
 			</div>
 		</section>
 		<section data-id="map03">
 			<div class="col-medium">
 				<p>
-					This is workplace population.
+					This is workplace population for each LSOA from the 2011 census, which shows that many LSOAs that have high GVA are those with high numbers of people working there.
 				</p>
 			</div>
 		</section>
