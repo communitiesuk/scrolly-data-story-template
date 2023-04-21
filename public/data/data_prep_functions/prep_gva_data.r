@@ -51,6 +51,8 @@ names(lsoa_data)  = str_replace(names(lsoa_data), "19", "GVA19")
 
 #I would also like to create a plot of LSOAs dived into swimlanes.
 lsoa_data$jitter = as.numeric(as.factor(lsoa_data$`LAD name`)) + runif(nrow(lsoa_data), -0.25, 0.25)
+#And order so they appear alphabetically
+lsoa_data = lsoa_data[order(lsoa_data$`LAD name`),]
 
 write.csv(lsoa_data, "../data_lsoa.csv", row.names=F)
 
@@ -98,9 +100,9 @@ write.csv(points_data, "../data_points.csv", row.names = F)
 #Also, let's use the rank data for both LSOAs and LADs together.
 
 lad_cut = la_data[,c('code', 'name', 'GVA', 'rank')]
-lsoa_cut = lsoa_data[,c('code', 'name', '2020', 'rank')]
+lsoa_cut = lsoa_data[,c('code', 'name', 'GVA2020', 'rank')]
 lsoa_cut$GVA = -50
-lad_cut$`2020` = -50
+lad_cut$GVA2020 = -50
 rank_data = rbind(lad_cut, lsoa_cut)
 write.csv(rank_data, "../data_scatter.csv", row.names=F)
 

@@ -24,6 +24,8 @@
     import ZoomMap from "./ZoomMap.svelte";
 	import AddPoints from "./AddPoints.svelte";
 	import MoveData from "./MoveData.svelte";
+    import TimeSeries from "./TimeSeries.svelte";
+	
 
 </script>
 
@@ -47,7 +49,7 @@
 	
 </Section>
 
-<MoveData/>
+<TimeSeries/>
 
 <Section>
 	<h2>Zoom into an Area</h2>
