@@ -49,6 +49,9 @@ library(stringr)
 names(lsoa_data)  = str_replace(names(lsoa_data), "20", "GVA20")
 names(lsoa_data)  = str_replace(names(lsoa_data), "19", "GVA19")
 
+#I would also like to create a plot of LSOAs dived into swimlanes.
+lsoa_data$jitter = as.numeric(as.factor(lsoa_data$`LAD name`)) + runif(nrow(lsoa_data), -0.25, 0.25)
+
 write.csv(lsoa_data, "../data_lsoa.csv", row.names=F)
 
 #LAD data
