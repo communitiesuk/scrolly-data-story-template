@@ -10,8 +10,9 @@
 		<a href="https://www.gov.uk/government/organisations/department-for-levelling-up-housing-and-communities">
 			<img
 				class="logo-img"
-				src="./img/dluhc-logo.svg"
-				alt="Department for Levelling Up Housing and Communities" />
+				src="./data/DLUHC_280_Master_AW.png"
+				alt="Department for Levelling Up Housing and Communities"
+				width=250px />
 		</a>
 		<hr style="border-top-color: {themes[theme]['muted']}" />
 		<div class="license">

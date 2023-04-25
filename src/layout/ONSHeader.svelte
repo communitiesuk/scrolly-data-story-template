@@ -1,6 +1,7 @@
 <script>
-  	import { themes } from '../config.js';
+  import { themes } from '../config.js';
 	import { getContext } from 'svelte';
+
 	export let theme = getContext('theme');
 	export let filled = false;
 	export let center = true;
@@ -10,7 +11,7 @@
   <div class="col-wide middle" class:center>
 		<a href="https://www.gov.uk/government/organisations/department-for-levelling-up-housing-and-communities">
 			<picture>
-				<img src="./img/dluhc-logo.svg" alt="Department for Levelling Up Housing and Communities">
+				<img src="./data/DLUHC_280_Master_AW.png" alt="Department for Levelling Up Housing and Communities" >
 				
 			</picture>
 		</a>
