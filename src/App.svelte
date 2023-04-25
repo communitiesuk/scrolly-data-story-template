@@ -20,7 +20,7 @@
 
 	import MoveMap from "./MoveMap.svelte";
 	import MapSpread from "./MapSpread.svelte";
-	import Chorpleths from "./Chorpleths.svelte";
+	import Choropleths from "./Choropleths.svelte";
     import ZoomMap from "./ZoomMap.svelte";
 	import AddPoints from "./AddPoints.svelte";
 	import MoveData from "./MoveData.svelte";
@@ -96,7 +96,7 @@
 	<p>This can be used to highlight similarities between the spatial patterns for different metrics -- that the same places are affected by different issues.</p>
 </Section>
 
-<Chorpleths/>
+<Choropleths/>
 
 <Section>
 	<h2>Add points to a map</h2>
@@ -151,7 +151,7 @@
 
 <ONSFooter />
 <style>
-	
+
 	:global(svelte-scroller-foreground) {
 		pointer-events: none !important;
 		max-width: 100% !important;

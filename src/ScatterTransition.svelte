@@ -56,30 +56,6 @@ export function doHover_chart(e) {
   hovered = e.detail.id;
 }
 
-export let hover_data_finder = function(mapKey){
-  let geography_key = map_variable_lookup[mapKey].geography;
-  hov = hover_dict[geography_key]
-  if (hov){
-    let hover_data = data[geography_key].indicators?.find(d => d.code == hov)[mapKey]
-    if (hover_data == '0'){
-      return "Data unavailable";
-    }
-    else{
-      return Number(hover_data);
-    }
-  }
-  return "";
-}
-export let hover_name_finder = function(mapKey){
-  let geography_key = map_variable_lookup[mapKey].geography;
-  hov = hover_dict[geography_key]
-  if (hov) {
-    return metadata[geography_key].lookup[hov].name
-  } else {
-    return "";
-  }
-}
-
     //Need these to be reactive.
     $: map_variable_lookup;
     $: hovered_lsoa;
