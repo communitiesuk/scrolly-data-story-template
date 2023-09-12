@@ -16,7 +16,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.12.1",
-    "@onsvisual/svelte-charts": "latest",
+    "@onsvisual/svelte-charts": "github:sean-dluhc/svelte-charts#sog-scatter-labels",
     "@onsvisual/svelte-maps": "latest",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
