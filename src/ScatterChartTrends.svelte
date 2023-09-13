@@ -11,7 +11,8 @@
     //import bbox from "@turf/bbox";
     import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures} from "./utils.js";
     import { map_variable_lookup, colors, units, mapbounds } from "./config.js";
-    import { ScatterChart, LineChart, BarChart } from "@onsvisual/svelte-charts";
+    import { ScatterChartTrendLines, LineChart, BarChart } from "@onsvisual/svelte-charts";
+
 
     // CONFIG FOR SCROLLER COMPONENTS
     const threshold = 0.65;
@@ -39,11 +40,13 @@
     let hovered_lsoa; // Hovered lsoa (chart or map)
 
     let hovered;
-    let xKey = "GVA2020"; // xKey for scatter chart
-    let yKey = null; // yKey for scatter chart
-    let zKey = null; // zKey (color) for scatter chart
+    let xKey = "GVA1998"; // xKey for scatter chart
+    let yKey = "GVA2000"; // yKey for scatter chart
+    let zKey = "ITL1_name"; // zKey (color) for scatter chart
     let rKey = null; // rKey (radius) for scatter chart
     let explore = false; // Allows chart/map interactivity to be toggled on/off
+
+    import dataScatterTrend from '../public/data/trend_data';
     
 
         // Functions for chart and map on:select and on:hover events
@@ -82,11 +85,8 @@ getData('./data/data_lsoa.csv')
                 GVA2000: d.GVA2000,
                 GVA1998: d.GVA1998,
                 workplace_pop: d.workplace_pop,
+                ITL1_name: d.ITL1_name,
             }));
-
-            ['GVA2020', 'GVA2015', 'GVA2010', 'GVA2005', 'workplace_pop'].forEach(key => {
-                indicators.forEach((d, i) => indicators[i][key + '_color'] = getColor(d[key], map_variable_lookup[key].scale, map_variable_lookup[key].scale_colours));
-                });
             
                 data.lsoa.indicators = indicators;
             });
@@ -101,14 +101,14 @@ getData('./data/data_lsoa.csv')
         chart01: () => {
                 xKey = "GVA1998";
                 yKey = "GVA2000";
-                zKey = null;
+                zKey = "ITL1_name";
                 rKey = null;
                 explore = false;
             },
             chart02: () => {
                 xKey = "GVA1998";
                 yKey = "GVA2018";
-                zKey = null;
+                zKey = "ITL1_name";
                 rKey = null;
                 explore = false;
             }
@@ -142,9 +142,10 @@ getData('./data/data_lsoa.csv')
             <div class="col-full height-full">
                 
                     <div class="chart">
-                        <ScatterChart
+                        <ScatterChartTrendLines
                         height="calc(100vh - 150px)"
                         data={data.lsoa.indicators}
+                        trendData={dataScatterTrend}
                         colors={explore ? ['lightgrey'] : colors.cat}
                         padding.top = 40
                         {xKey} {yKey} {zKey} {rKey} idKey="code" labelKey="name"
