@@ -153,7 +153,6 @@ getData('./data/data_lsoa.csv')
                         yMax={1000}
                         ySuffix=" people"
                         yFormatTick={d => d.toLocaleString()}
-                        legend={zKey != null} labels
                         select={explore} selected={explore ? selected : null} 
                         hover {hovered} on:hover={doHover_chart}
                         colorSelect="#206095" colorHighlight="#999" overlayFill
