@@ -4,7 +4,7 @@ A component-based scrollytelling template made with Svelte.
 
 ![demo_gif_small](https://github.com/user-attachments/assets/b333340b-ac34-461a-8715-ae37a48ce581)
 
-View the live template article [here]([https://website-name.com](https://ubiquitous-cheesecake-33c5f3.netlify.app/)!
+View the live template article [here](https://ubiquitous-cheesecake-33c5f3.netlify.app/)!
 
 We have adapted code produced by the ONS for use in MHCLG.
 
