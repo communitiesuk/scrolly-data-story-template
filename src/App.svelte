@@ -23,14 +23,9 @@
 	import Choropleths from "./Choropleths.svelte";
     import ZoomMap from "./ZoomMap.svelte";
 	import AddPoints from "./AddPoints.svelte";
-	
 	import MoveData from "./MoveData.svelte";
     import TimeSeries from "./TimeSeries.svelte";
-	import ScatterTransition from "./ScatterTransition.svelte";
-	import ScatterChartTrends from "./ScatterChartTrends.svelte";
-	
-	
-
+	import ScatterTransition from "./ScatterTransition.svelte";	
 </script>
 
 <ONSHeader filled={true} center={false} />
@@ -130,15 +125,6 @@
 </Section>
 
 <MoveData/>
-
-<Section>
-	<h2>Add trend lines to scatter charts</h2>
-	<p class="mb">
-		This is a scatter chart which has user defined trend lines.
-	</p>
-</Section>
-
-<ScatterChartTrends/>
 
 <Section>
 	<h2>An animated transition between plots</h2>
