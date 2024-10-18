@@ -2,9 +2,12 @@
 
 A component-based scrollytelling template made with Svelte.
 
-We have adapted code produced by the ONS for use in DLUHC.
+View the live template article here!
+
+We have adapted code produced by the ONS for use in MHCLG.
 
 This is a template which demostrates the main features of scrollytelling articles and can be used as a starting point for your own data stories.
+
 
 ## Getting started
 
@@ -51,16 +54,13 @@ If you need to add images or data files for charts, maps, etc, you can put these
 ## About the components
 
 #### &lt;ONSHeader/&gt; & &lt;ONSFooter/&gt;
-Minimal ONS-branded page headers and footers based on existing ONS templates.
+Minimal MHCLG-branded page headers and footers based on existing ONS templates.
 
 #### &lt;Header/&gt;
 A full height component for the top of the article, with an optional background image which can be static (as in the demo) or scroll with the text.
 
 #### &lt;Section/&gt;
 Unstyled component. Mostly for text content, but can take any HTML if needed.
-
-#### &lt;Media/&gt;
-Used to create DIVS for content within a responsive grid (for maps, charts, images etc). It also allows for full width media. See the default template for options.
 
 #### &lt;Scroller/&gt;
 This is a really important component that allows for dynamic scroll-triggered content with interactions coded in Javascript. It is coded by Rich Harris (the creator of Svelte), and is [documented here](https://github.com/sveltejs/svelte-scroller), but has been re-styled with CSS in this template (see notes below).
