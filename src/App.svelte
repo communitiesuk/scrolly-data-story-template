@@ -232,48 +232,49 @@
 		-webkit-transform: rotate(-180deg);
 		-ms-transform: rotate(-180deg);
 		transform: rotate(-180deg);
-	}
-	.floater{
-  position:fixed;
-  top: 3px;
-  left: 3px;
-  z-index: 100;
-  background-color: #fff;
-  border: 2px solid #253494;
-  font-size: 12px;
-  padding: 5px;
--webkit-transition: all 0.3s ease-out;
--moz-transition: all 0.3s ease-out;
--ms-transition: all 0.3s ease-out;
--o-transition: all 0.3s ease-out;
-transition: all 0.3s ease-out;
-}
-.floater .hovered { display:none }
-.floater:hover .hovered { display: block; }
-.floater p { display: inline }
-.floater:hover p { display: inline }
-.floater:hover {
-  position:fixed;
-  top: 3px;
-  left: 3px;
-  z-index: 100;
-  background-color: #fff;
-  border: 2px solid #253494;
-  font-size: 16px;
-  padding: 5px;
-}
-.floater:active p { display: inline }
-.floater:active{
-		
-		position:fixed;
-		top: 3px;
-		left: 3px;
-		z-index: 100;
-		background-color: #fff;
-		border: 2px solid #253494;
-		font-size: 16px;
-		padding: 5px;
-	  }
+	}    .floater {
+        position: fixed;
+        top: 3px;
+        left: 3px;
+        z-index: 100;
+        background-color: #fff;
+        border: 2px solid #00625e;
+        font-size: 12px;
+        padding: 5px;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -ms-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+    }
+
+    .floater .hovered {
+        display: none;
+    }
+
+    .floater:hover .hovered {
+        display: block;
+    }
+
+    .floater p {
+        display: inline;
+    }
+
+    .floater:hover p {
+        display: inline;
+    }
+
+    .floater:hover {
+        position: fixed;
+        top: 3px;
+        left: 3px;
+        z-index: 100;
+        background-color: #fff;
+        border: 2px solid #00625e;
+        font-size: 16px;
+        padding: 5px;
+    }
+
 	  
 body {
     overflow-x: hidden !important;
@@ -286,29 +287,3 @@ body {
     scroll-behavior: smooth;
 }
 </style>
-
-<!---
-
-/* 
-Note this syntax is what I want to use for this, from svelte REPL testing.
-<script>
-	import Component2 from "./Component2.svelte";
-	import C3 from "./Component3.svelte";
-	let name = 'World'
-</script>
-
-<h1>Hello {name}!</h1>
-
-<h2>
-	This now does what I have in Component 2
-</h2>
-<Component2/>
-
-<h2>
-	This now does what I have in Component 3
-</h2>
-<C3/>
-*/
-
-
--->
