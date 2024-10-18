@@ -6,13 +6,7 @@
 	import ONSFooter from "./layout/ONSFooter.svelte";
 	import Header from "./layout/Header.svelte";
 	import Section from "./layout/Section.svelte";
-	import Media from "./layout/Media.svelte";
-	import Scroller from "./layout/Scroller.svelte";
-	import Filler from "./layout/Filler.svelte";
 	import Divider from "./layout/Divider.svelte";
-	import Toggle from "./ui/Toggle.svelte";
-	import Arrow from "./ui/Arrow.svelte";
-	import Em from "./ui/Em.svelte";
 
     let theme = "light";
 	setContext("theme", theme);

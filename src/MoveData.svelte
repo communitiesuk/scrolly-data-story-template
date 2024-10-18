@@ -1,13 +1,10 @@
 <script>
 
 // CORE IMPORTS
-	import { setContext, onMount } from "svelte";
+	import { onMount } from "svelte";
 	import { getMotion } from "./utils.js";
-	import { themes } from "./config.js";
 	import Scroller from "./layout/Scroller.svelte";
-	import Em from "./ui/Em.svelte";
-	//import ColourScaleLegend from "./map_components/ColourScaleLegend.svelte";
-	
+
     // DEMO-SPECIFIC IMPORTS
 	//import bbox from "@turf/bbox";
 	import { getData, setColors, getTopo, getColor, fitBounds, fitById, fitFeatures} from "./utils.js";

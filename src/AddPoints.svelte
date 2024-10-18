@@ -5,7 +5,6 @@
 	import { getMotion } from "./utils.js";
 	import { themes } from "./config.js";
 	import Scroller from "./layout/Scroller.svelte";
-	import Em from "./ui/Em.svelte";
 	import ColourScaleLegend from "./map_components/ColourScaleLegend.svelte";
 	
     // DEMO-SPECIFIC IMPORTS
